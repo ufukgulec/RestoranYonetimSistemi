@@ -7,8 +7,10 @@ namespace Rys.Controllers
     public class ProductController : Controller
     {
         ProductManager productManager = new ProductManager(new EfProductRepository());
+        CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
         public IActionResult Index()
         {
+            ViewData["Categories"] = categoryManager.GetAll();
             var values = productManager.GetAllWithCategory();
             return View(values);
         }

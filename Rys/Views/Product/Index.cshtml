@@ -75,58 +75,62 @@
     <div class="row p-0 mt-3">
         <div class="col">
             <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button bg-danger text-white"
+                @foreach (var category in ViewData["Categories"] as List<Category>)
+                {
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button bg-danger text-white"
                                 type="button"
                                 data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne"
+                                data-bs-target="#@category.Name"
                                 aria-expanded="true"
-                                aria-controls="collapseOne">
-                            Kategori Adı: Name
-                        </button>
-                    </h2>
-                    <div id="collapseOne"
+                                aria-controls="@category.Name">
+                                Kategori Adı: @category.Name
+                            </button>
+                        </h2>
+                        <div id="@category.Name"
                          class="accordion-collapse collapse show"
-                         aria-labelledby="headingOne"
+                         aria-labelledby="@category.Name"
                          data-bs-parent="#accordionExample">
-                        <div class="accordion-body table-responsive">
-                            <table class="table table-bordered align-middle text-center">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Ürün Adı</th>
-                                        <th scope="col">Fiyatı</th>
-                                        <th scope="col">Durumu</th>
-                                        <th scope="col">Detay</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
+                            <div class="accordion-body table-responsive">
+                                <table class="table table-bordered align-middle text-center">
+                                    <thead>
                                         <tr>
-                                            <th scope="row">@item.Name</th>
-                                            <td>@item.Price <b>₺</b></td>
-                                            <td>
-                                                @if (item.Status)
-                                                {
-                                                    <span class="badge alert-success">Açık ürün</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="badge alert-danger">Kapalı ürün</span>
-                                                }
-                                            </td>
-                                            <td>
-                                                <a href="product.html"
-                                               class="btn btn-main text-white w-100">Detay</a>
-                                            </td>
+                                            <th scope="col">Ürün Adı</th>
+                                            <th scope="col">Fiyatı</th>
+                                            <th scope="col">Durumu</th>
+                                            <th scope="col">Detay</th>
                                         </tr>
-                                    }
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.FindAll(x => x.CategoryId == category.Id))
+                                        {
+                                            <tr>
+                                                <th scope="row">@item.Name</th>
+                                                <td>@item.Price <b>₺</b></td>
+                                                <td>
+                                                    @if (item.Status)
+                                                    {
+                                                        <span class="badge alert-success">Açık ürün</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge alert-danger">Kapalı ürün</span>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <a href="product.html"
+                                               class="btn btn-main text-white w-100">Detay</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
+
             </div>
         </div>
     </div>
