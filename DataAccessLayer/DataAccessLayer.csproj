@@ -25,8 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Concrete\" />
-    <Folder Include="Abstract\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
