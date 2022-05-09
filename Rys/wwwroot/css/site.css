@@ -1,71 +1,304 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-a.navbar-brand {
-  white-space: normal;
+:root {
+  --main-color: #5932ea;
+  --text-muted-color: #9197b3;
+  background: #fafbff;
+}
+* {
+  font-family: "Poppins", sans-serif;
+}
+.btn-main {
+  color: white;
+  background: var(--main-color);
+}
+body {
+  background-color: #fafbff;
+}
+/*Admin Dashboard Menu Start*/
+nav {
+  align-content: center;
+  font-size: medium;
+  height: 100vh !important;
+  display: block !important;
+}
+.nav-link {
+  color: var(--text-muted-color);
+  border-radius: 8px;
+  padding: 0 10px;
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-link.active {
+  color: #fff;
+  background-color: var(--main-color);
+}
+.nav-link i:first-child {
+  display: flex;
+  align-items: center;
+}
+.nav-link i:first-child::before {
+  margin: 11px;
+  font-size: 20px;
+  padding: 4px;
+}
+.btnLogout {
+  display: flex;
+  align-content: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+/*Admin Dashboard Menu End*/
+/*Mobile Menu Start*/
+.mobile-buttons-area {
+  margin: auto;
+}
+.col-m {
+  width: 20%;
+}
+.mobile-buttons-area a {
+  color: var(--text-muted-color);
+  text-decoration: none;
+  font-size: 0.5em;
+}
+.mobile-buttons-area a i {
+  font-size: 1rem;
+}
+.mobile-buttons-area a.active {
+  background-color: var(--main-color);
+  color: #fff;
+  border-radius: 8px;
+}
+/*Mobile Menu End*/
+/*Admin Dashboard Main Start*/
+.personInfo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+.personInfo i {
+  margin-right: 15px;
+}
+
+.searchForm {
+  position: relative;
+}
+.searchForm input {
+  border-radius: 12px;
+}
+.searchForm input:focus {
+  border: none;
+  box-shadow: none;
+  border: 1px solid #ced4da;
+}
+.searchIcon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  color: #7e7e7e;
+  font-size: 22px;
+}
+.whiteRow {
+  border-radius: 30px;
+  padding: 30px 60px;
+}
+.whiteRow a {
+  color: #000;
+  text-decoration: none;
+  align-items: center;
+  justify-content: space-evenly;
   text-align: center;
-  word-break: break-all;
 }
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+.whiteRow a i {
+  font-size: 36px;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.whiteRow div:first-child i {
+  background-color: #d3ffe7;
+  color: #00ac4f;
 }
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.whiteRow i {
+  background-color: #caf1ff;
+  color: #0f5fc2;
 }
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
+.whiteRow div:last-child i {
+  background-color: #ffa3cf;
+  color: #da001a;
 }
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+@media only screen and (max-width: 992px) {
+  .whiteRow .border-end {
+    border: none !important;
+  }
+  .whiteRow .col-lg-4 {
+    margin-bottom: 15px !important;
+  }
+  .charts .col-lg-8,
+  .charts .col-lg-4 {
+    padding: 0 !important;
   }
 }
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
+.whiteCol {
+  border-radius: 30px;
+  padding: 30px 60px !important;
 }
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.options a {
+  color: var(--text-muted-color);
+  text-decoration: none;
+  text-align: center;
+  display: grid;
 }
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.options a:hover {
+  color: #666;
 }
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.options a i {
+  font-size: 64px;
 }
+/*Admin Dashboard Main End*/
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
+/*Entegrasyon Start*/
+.entegrasyons .rounded-3,
+.entegrasyons .rounded {
+  border-radius: 30px !important;
+}
+.entegrasyons span {
+  margin-bottom: 20px;
+}
+.bg-yemeksepeti {
+  background-color: #fa0050;
+}
+.bg-getir {
+  background-color: #4c3398;
+}
+.bg-trendyol {
+  background-color: #f27a1a;
+}
+.entegrasyonLogo img {
+  object-fit: contain;
+  max-width: 160px;
+  height: 60px !important;
+}
+/*Entegrasyon End*/
+
+/*Admin Orders Page Start*/
+.orders .accordion-body {
+  max-height: 300px;
+  overflow: auto;
+}
+.accordion-button::after {
+  filter: brightness(50) !important;
+}
+#alert-order {
   position: relative;
-  min-height: 100%;
+}
+#alert-order i {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+#alert-order i::before {
+  margin-right: 20px;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
+#alert-order button {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+  right: 0;
+  top: 0;
+  padding: 0 !important;
+  height: 100%;
+  margin-right: 20px;
 }
+.border-left-danger {
+  border-left: 0.25rem solid #dc3545 !important;
+}
+.border-left-primary {
+  border-left: 0.25rem solid #4e73df !important;
+}
+.border-left-success {
+  border-left: 0.25rem solid #1cc88a !important;
+}
+.border-left-info {
+  border-left: 0.25rem solid #36b9cc !important;
+}
+.border-left-warning {
+  border-left: 0.25rem solid #f6c23e !important;
+}
+
+.order-buttons a {
+  color: #000 !important;
+  text-decoration: none;
+}
+.order-buttons a i {
+  font-size: 20px;
+}
+.orders tbody tr{
+  cursor: pointer;
+}
+/*Admin Orders Page End*/
+
+/*Login Page Start*/
+.login-background {
+  background-image: url("../images/login.jpg");
+  background-size: cover;
+}
+.login-form-area {
+  background-color: rgba(255, 255, 255, 1);
+}
+/*Login Page End*/
+/*Products Page Start*/
+tbody tr th {
+  text-align: start;
+}
+/*Products Page End*/
+/*Tables Page Start*/
+.tables div {
+  display: flex;
+}
+.tables div .table {
+  padding: 0 !important;
+  text-decoration: none;
+  height: 200px;
+  font-size: 2em;
+  font-weight: bolder;
+  color: #ffffff !important;
+  width: 100%;
+  display: grid;
+  align-items: flex-end;
+  text-shadow: 1px 1px 1px black;
+}
+.tables div .table:hover {
+  box-shadow: 5px 5px 25px 1px rgb(219, 219, 219);
+}
+.tables div .table div:first-child {
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+.tables div .table div:not(:first-child) {
+  padding: 5px;
+  width: 100%;
+  background-color: #acacac2f;
+  text-align: end;
+  display: block;
+  font-size: 0.7em;
+}
+
+.emptyTable {
+  background-color: var(--main-color);
+}
+.fullTable {
+  background-color: #dc3545;
+}
+/*Tables Page End*/
