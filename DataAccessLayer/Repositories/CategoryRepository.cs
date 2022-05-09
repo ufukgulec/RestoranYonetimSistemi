@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
-    public class CategoryRepository
+    public class CategoryRepository : GenericRepository<Category>
     {
 
     }
