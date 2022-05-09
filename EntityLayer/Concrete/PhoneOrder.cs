@@ -16,5 +16,7 @@ namespace EntityLayer.Concrete
         public bool Status { get; set; }
         public string PhoneNumber { get; set; }
         public int StreetId { get; set; }
+        public Street Street { get; set; }
+        public List<PhoneOrderDetail> PhoneOrderDetails { get; set; }
     }
 }

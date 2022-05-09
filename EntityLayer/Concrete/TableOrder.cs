@@ -16,5 +16,8 @@ namespace EntityLayer.Concrete
         public bool Status { get; set; }
         public int TableId { get; set; }
         public int StaffId { get; set; }
+        public Table Table { get; set; }
+        public Staff Staff { get; set; }
+        public List<TableOrderDetail> TableOrderDetails { get; set; }
     }
 }

@@ -16,5 +16,8 @@ namespace EntityLayer.Concrete
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
         public bool Status { get; set; }
+        public Category Category { get; set; }
+        public List<TableOrderDetail> TableOrderDetails { get; set; }
+        public List<PhoneOrderDetail> PhoneOrderDetails { get; set; }
     }
 }

@@ -12,5 +12,6 @@ namespace EntityLayer.Concrete
         [Key]
         public int Id { get; set; }
         public bool Status { get; set; }
+        public List<TableOrder> tableOrders { get; set; }
     }
 }

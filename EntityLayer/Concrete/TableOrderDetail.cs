@@ -14,5 +14,7 @@ namespace EntityLayer.Concrete
         public int OrderId { get; set; }
         public int ProductId { get; set; }
         public int ProductCount { get; set; }
+        public TableOrder TableOrder { get; set; }
+        public Product Product { get; set; }
     }
 }
