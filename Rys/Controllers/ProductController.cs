@@ -9,7 +9,7 @@ namespace Rys.Controllers
         ProductManager productManager = new ProductManager(new EfProductRepository());
         public IActionResult Index()
         {
-            var values = productManager.GetAll();
+            var values = productManager.GetAllWithCategory();
             return View(values);
         }
     }
