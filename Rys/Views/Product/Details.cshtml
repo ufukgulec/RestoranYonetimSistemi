@@ -7,19 +7,22 @@
 <div class="container-fluid p-0 p-md-3">
     <div class="row p-0 mt-3">
         <div class="col">
-            <form>
+            <form method="post">
+                <input type="hidden" value="@Model.Id" name="Id" />
                 <div class="mb-3">
                     <label for="exampleInputEmail1"
                            class="form-label">Ürün Adı</label>
                     <input type="text"
                            class="form-control shadow-sm"
                            id="exampleInputEmail1"
+                           name="Name"
                            value="@Model.Name"
                            aria-describedby="emailHelp" />
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Ürün Fiyatı ₺</label>
                     <input type="text"
+                           name="Price"
                            value="@Model.Price"
                            class="form-control shadow-sm"
                            id="exampleInputPassword1" />
@@ -27,6 +30,7 @@
                 <div class="mb-3">
                     <label for="exampleInputSelect" class="form-label">Ürün Kategori</label>
                     <select class="form-select shadow-sm"
+                            name="CategoryId"
                             aria-label="Default select example"
                             id="exampleInputSelect">
                         <option value="@Model.CategoryId" selected>@Model.Category.Name</option>
@@ -44,6 +48,7 @@
                            class="form-label">Ürün Açıklama</label>
                     <textarea class="form-control shadow-sm"
                               id="exampleFormControlTextarea1"
+                              name="Description"
                               rows="3">@Model.Description</textarea>
                 </div>
                 <div class="mb-3">
@@ -52,7 +57,8 @@
                         <div class="form-check">
                             <input class="form-check-input"
                                type="radio"
-                               name="flexRadioDefault"
+                               name="Status"
+                               value="true"
                                checked
                                id="flexRadioDefault1" />
                             <label class="form-check-label" for="flexRadioDefault1">
@@ -62,7 +68,8 @@
                         <div class="form-check">
                             <input class="form-check-input"
                                type="radio"
-                               name="flexRadioDefault"
+                               name="Status"
+                               value="false"
                                id="flexRadioDefault2" />
                             <label class="form-check-label" for="flexRadioDefault2">
                                 Kapalı Ürün
@@ -74,7 +81,8 @@
                         <div class="form-check">
                             <input class="form-check-input"
                                type="radio"
-                               name="flexRadioDefault"
+                               name="Status"
+                               value="true"
                                id="flexRadioDefault1" />
                             <label class="form-check-label" for="flexRadioDefault1">
                                 Açık Ürün
@@ -83,7 +91,8 @@
                         <div class="form-check">
                             <input class="form-check-input"
                                type="radio"
-                               name="flexRadioDefault"
+                               name="Status"
+                               value="false"
                                checked
                                id="flexRadioDefault2" />
                             <label class="form-check-label" for="flexRadioDefault2">

@@ -85,7 +85,7 @@
                                 data-bs-target="#@category.Name"
                                 aria-expanded="false"
                                 aria-controls="@category.Name">
-                                Kategori Adı: @category.Name
+                                Kategori Adı: @category.Name (@category.Products.Count Ürün)
                             </button>
                         </h2>
                         <div id="@category.Name"
@@ -119,7 +119,7 @@
                                                     }
                                                 </td>
                                                 <td>
-                                                    <a href="product.html"
+                                                    <a href="Product/Details/@item.Id"
                                                class="btn btn-main text-white w-100">Detay</a>
                                                 </td>
                                             </tr>
