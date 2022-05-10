@@ -12,5 +12,10 @@ namespace Rys.Controllers
             var values = categoryManager.GetAll();
             return View(values);
         }
+        public IActionResult Details(int id)
+        {
+            var values = categoryManager.Get(id);
+            return View(values);
+        }
     }
 }
