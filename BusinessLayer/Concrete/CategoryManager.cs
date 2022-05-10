@@ -39,6 +39,11 @@ namespace BusinessLayer.Concrete
             return _categoryDal.GetAll();
         }
 
+        public List<Category> GetAll(string TableName)
+        {
+            return _categoryDal.GetAll(TableName);
+        }
+
         public void Update(Category entity)
         {
             _categoryDal.Update(entity);

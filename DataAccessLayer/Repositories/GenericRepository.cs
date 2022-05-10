@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,12 @@ namespace DataAccessLayer.Repositories
         {
             using var context = new Context();
             return context.Set<T>().ToList();
+        }
+
+        public List<T> GetAll(string TableName)
+        {
+            using var context = new Context();
+            return context.Set<T>().Include(TableName).ToList();
         }
 
         public void Update(T entity)

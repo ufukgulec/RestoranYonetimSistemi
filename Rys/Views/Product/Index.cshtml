@@ -79,17 +79,17 @@
                 {
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button bg-danger text-white"
+                            <button class="accordion-button bg-danger text-white collapsed"
                                 type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#@category.Name"
-                                aria-expanded="true"
+                                aria-expanded="false"
                                 aria-controls="@category.Name">
                                 Kategori Adı: @category.Name
                             </button>
                         </h2>
                         <div id="@category.Name"
-                         class="accordion-collapse collapse show"
+                         class="accordion-collapse collapse"
                          aria-labelledby="@category.Name"
                          data-bs-parent="#accordionExample">
                             <div class="accordion-body table-responsive">

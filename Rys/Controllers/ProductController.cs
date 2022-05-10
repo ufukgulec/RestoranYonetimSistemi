@@ -11,7 +11,7 @@ namespace Rys.Controllers
         public IActionResult Index()
         {
             ViewData["Categories"] = categoryManager.GetAll();
-            var values = productManager.GetAllWithCategory();
+            var values = productManager.GetAll("Category");
             return View(values);
         }
         public IActionResult Details(int id)

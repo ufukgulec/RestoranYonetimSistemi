@@ -30,6 +30,11 @@ namespace BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
+        public List<T> GetAll(string TableName)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(T entity)
         {
             throw new NotImplementedException();

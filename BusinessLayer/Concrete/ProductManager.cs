@@ -38,6 +38,11 @@ namespace BusinessLayer.Concrete
             return _productDal.GetAll();
         }
 
+        public List<Product> GetAll(string TableName)
+        {
+            return _productDal.GetAll(TableName);
+        }
+
         public List<Product> GetAllWithCategory()
         {
             return _productDal.GetAllWithCategory();
