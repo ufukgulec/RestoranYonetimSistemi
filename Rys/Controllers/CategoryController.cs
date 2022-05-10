@@ -9,7 +9,7 @@ namespace Rys.Controllers
         CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
         public IActionResult Index()
         {
-            var values = categoryManager.GetAll();
+            var values = categoryManager.GetAll("Products");
             return View(values);
         }
         public IActionResult Details(int id)

@@ -12,6 +12,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Kategori Adı</th>
+                        <th scope="col">Ürün Sayısı</th>
                         <th scope="col">Durumu</th>
                         <th scope="col">Güncelle</th>
                         <th scope="col">Sil</th>
@@ -22,6 +23,7 @@
                     {
                         <tr>
                             <th>@item.Name</th>
+                            <th>@item.Products.Count</th>
                             <td>
                                 @if (item.Status)
                                 {
