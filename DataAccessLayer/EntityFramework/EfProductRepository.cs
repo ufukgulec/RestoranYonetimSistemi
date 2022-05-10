@@ -20,5 +20,13 @@ namespace DataAccessLayer.EntityFramework
                 return c.Products.Include(x => x.Category).ToList();
             }
         }
+
+        public Product GetWithCategory(int id)
+        {
+            using (var c = new Context())
+            {
+                return c.Products.Include(x => x.Category).ToList().Find(x => x.Id == id);
+            }
+        }
     }
 }

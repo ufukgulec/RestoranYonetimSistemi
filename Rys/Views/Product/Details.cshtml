@@ -29,10 +29,14 @@
                     <select class="form-select shadow-sm"
                             aria-label="Default select example"
                             id="exampleInputSelect">
-                        <option selected>@Model.Category.Name</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="@Model.CategoryId" selected>@Model.Category.Name</option>
+                        @foreach (var item in @ViewData["Categories"] as List<Category>)
+                        {
+                            if (Model.CategoryId != item.Id)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
                     </select>
                 </div>
                 <div class="mb-3">

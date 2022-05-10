@@ -48,6 +48,11 @@ namespace BusinessLayer.Concrete
             return _productDal.GetAllWithCategory();
         }
 
+        public Product GetWithCategory(int id)
+        {
+            return _productDal.GetWithCategory(id);
+        }
+
         public void Update(Product entity)
         {
             _productDal.Update(entity);
