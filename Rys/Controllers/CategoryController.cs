@@ -37,10 +37,12 @@ namespace Rys.Controllers
             categoryManager.Add(category);
             return RedirectToAction("Index");
         }
-        public IActionResult Delete(Category category)
+        public IActionResult Delete(int id)
         {
+            ProductManager productManager = new ProductManager(new EfProductRepository());
+            productManager.DeleteWithCategoryId(id);
             //Kategori silerken ürünlerde silinmeli....
-            categoryManager.Delete(category);
+            categoryManager.Delete(categoryManager.Get(id));
             return RedirectToAction("Index");
         }
     }

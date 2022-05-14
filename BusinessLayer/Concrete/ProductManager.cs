@@ -28,6 +28,11 @@ namespace BusinessLayer.Concrete
             _productDal.Delete(entity);
         }
 
+        public void DeleteWithCategoryId(int id)
+        {
+            _productDal.DeleteWithCategoryId(id);
+        }
+
         public Product Get(int id)
         {
             return _productDal.Get(id);

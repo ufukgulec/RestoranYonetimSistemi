@@ -13,6 +13,14 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfProductRepository : GenericRepository<Product>, IProductDal
     {
+        public void DeleteWithCategoryId(int id)
+        {
+            using (var c = new Context())
+            {
+                c.Products.RemoveRange(c.Products.Where(p => p.CategoryId == id));
+            }
+        }
+
         public List<Product> GetAllWithCategory()
         {
             using (var c = new Context())
