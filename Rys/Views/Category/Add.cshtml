@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="container-fluid p-0 p-md-3">
+    <div class="row p-0 mt-3">
+        <div class="col">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Kategori Adı</label>
+                    <input type="text"
+                           class="form-control shadow-sm"
+                           id="exampleInputPassword1"
+                           name="Name" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1"
+                           class="form-label">Kategori Açıklama</label>
+                    <textarea class="form-control shadow-sm"
+                              id="exampleFormControlTextarea1"
+                              name="Description"
+                              rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="radio"
+                               name="Status"
+                               value="true"
+                               id="flexRadioDefault1" />
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Açık Kategori
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="radio"
+                               name="Status"
+                               value="false"
+                               id="flexRadioDefault2" />
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Kapalı Kategori
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Kaydet
+                </button>
+                <button type="reset" class="btn btn-danger">
+                    Temizle
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

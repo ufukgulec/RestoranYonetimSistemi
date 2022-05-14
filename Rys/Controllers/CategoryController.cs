@@ -45,5 +45,16 @@ namespace Rys.Controllers
             categoryManager.Delete(categoryManager.Get(id));
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Add(Category category)
+        {
+            categoryManager.Add(category);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -2,6 +2,7 @@
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Rys.Controllers
 {
@@ -26,6 +27,18 @@ namespace Rys.Controllers
         public IActionResult Details(Product product)
         {
             productManager.Update(product);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Add()
+        {
+            ViewData["Categories"] = categoryManager.GetAll();
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Add(Product product)
+        {
+            productManager.Add(product);
             return RedirectToAction("Index");
         }
     }
