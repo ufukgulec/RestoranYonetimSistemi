@@ -59,7 +59,7 @@
                                     Toplam Ürün
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    @Model.Capacity Adet
+                                    @Model.Count() Adet
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -119,7 +119,7 @@
                                                     }
                                                 </td>
                                                 <td>
-                                                    <a href="Product/Details/@item.Id"
+                                                    <a href="/Product/Details/@item.Id"
                                                class="btn btn-main text-white w-100">Detay</a>
                                                 </td>
                                             </tr>
