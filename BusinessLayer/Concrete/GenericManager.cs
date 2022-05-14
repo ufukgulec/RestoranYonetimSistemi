@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,34 +11,41 @@ namespace BusinessLayer.Concrete
 {
     public class GenericManager<T> : IGenericService<T> where T : class
     {
+        IGenericDal<T> _genericDal;
+
+        public GenericManager(IGenericDal<T> genericDal)
+        {
+            _genericDal = genericDal;
+        }
+
         public void Add(T entity)
         {
-            throw new NotImplementedException();
+            _genericDal.Add(entity);
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            _genericDal?.Delete(entity);
         }
 
         public T Get(int id)
         {
-            throw new NotImplementedException();
+            return _genericDal.Get(id);
         }
 
         public List<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _genericDal.GetAll();
         }
 
         public List<T> GetAll(string TableName)
         {
-            throw new NotImplementedException();
+            return _genericDal.GetAll(TableName);
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _genericDal.Update(entity);
         }
     }
 }
