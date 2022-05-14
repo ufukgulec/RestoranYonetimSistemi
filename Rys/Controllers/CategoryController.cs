@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Rys.Controllers
@@ -25,18 +27,6 @@ namespace Rys.Controllers
             categoryManager.Update(category);
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Create(Category category)
-        {
-            category.Status = true;
-            categoryManager.Add(category);
-            return RedirectToAction("Index");
-        }
         public IActionResult Delete(int id)
         {
             ProductManager productManager = new ProductManager(new EfProductRepository());
@@ -53,8 +43,23 @@ namespace Rys.Controllers
         [HttpPost]
         public IActionResult Add(Category category)
         {
-            categoryManager.Add(category);
-            return RedirectToAction("Index");
+            CategoryValidator validationRules = new CategoryValidator();
+            ValidationResult validationResult = validationRules.Validate(category);
+            if (validationResult.IsValid)
+            {
+                category.Status = true;
+                categoryManager.Add(category);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+
         }
     }
 }

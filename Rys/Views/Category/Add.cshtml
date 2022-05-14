@@ -1,43 +1,50 @@
-﻿@{
+﻿@using EntityLayer.Concrete;
+@model Category
+@{
     ViewData["Title"] = "Add";
 }
 
 <div class="container-fluid p-0 p-md-3">
     <div class="row p-0 mt-3">
         <div class="col">
-            <form method="post">
+            @using (Html.BeginForm("Add", "Category", FormMethod.Post))
+            {
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Kategori Adı</label>
-                    <input type="text"
-                           class="form-control shadow-sm"
-                           id="exampleInputPassword1"
-                           name="Name" />
+                    @*                    <input type="text"
+                        class="form-control shadow-sm"
+                        id="exampleInputPassword1"
+                        name="Name" />*@
+                    @Html.TextBoxFor(x=>x.Name,new{@class="form-control shadow-sm"})
+                    @Html.ValidationMessageFor(x=>x.Name,null,new{@class="text-danger"})
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1"
-                           class="form-label">Kategori Açıklama</label>
-                    <textarea class="form-control shadow-sm"
-                              id="exampleFormControlTextarea1"
-                              name="Description"
-                              rows="3"></textarea>
+                       class="form-label">Kategori Açıklama</label>
+                    @*                    <textarea class="form-control shadow-sm"
+                        id="exampleFormControlTextarea1"
+                        name="Description"
+                        rows="3"></textarea>*@
+                    @Html.TextAreaFor(x=>x.Description,new{@class="form-control shadow-sm"})
+                    @Html.ValidationMessageFor(x=>x.Description)
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
                         <input class="form-check-input"
-                               type="radio"
-                               name="Status"
-                               value="true"
-                               id="flexRadioDefault1" />
+                           type="radio"
+                           name="Status"
+                           value="true"
+                           id="flexRadioDefault1" />
                         <label class="form-check-label" for="flexRadioDefault1">
                             Açık Kategori
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input"
-                               type="radio"
-                               name="Status"
-                               value="false"
-                               id="flexRadioDefault2" />
+                           type="radio"
+                           name="Status"
+                           value="false"
+                           id="flexRadioDefault2" />
                         <label class="form-check-label" for="flexRadioDefault2">
                             Kapalı Kategori
                         </label>
@@ -49,7 +56,7 @@
                 <button type="reset" class="btn btn-danger">
                     Temizle
                 </button>
-            </form>
+            }
         </div>
     </div>
 </div>
