@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -38,8 +40,22 @@ namespace Rys.Controllers
         [HttpPost]
         public IActionResult Add(Product product)
         {
-            productManager.Add(product);
-            return RedirectToAction("Index");
+            ProductValidator validationRules = new ProductValidator();
+            ValidationResult validationResult = validationRules.Validate(product);
+
+            if (validationResult.IsValid)
+            {
+                productManager.Add(product);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
     }
 }

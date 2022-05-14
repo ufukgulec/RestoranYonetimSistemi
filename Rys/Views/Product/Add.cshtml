@@ -6,27 +6,25 @@
 <div class="container-fluid p-0 p-md-3">
     <div class="row p-0 mt-3">
         <div class="col">
-            <form method="post">
+            @using (Html.BeginForm("Add", "Product", FormMethod.Post))
+            {
                 <div class="mb-3">
                     <label for="exampleInputEmail1"
-                           class="form-label">Ürün Adı</label>
-                    <input type="text"
-                           class="form-control shadow-sm"
-                           id="exampleInputEmail1"
-                           name="Name" />
+                       class="form-label">Ürün Adı</label>
+                    @Html.TextBoxFor(x=>x.Name,new{@class="form-control shadow-sm"})
+                    @Html.ValidationMessageFor(x=>x.Name,null,new{@class="text-danger"})
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Ürün Fiyatı ₺</label>
-                    <input type="text"
-                           name="Price"
-                           class="form-control shadow-sm" />
+                    @Html.TextBoxFor(x=>x.Price,new{@class="form-control shadow-sm"})
+                    @Html.ValidationMessageFor(x=>x.Price,null,new{@class="text-danger"})
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputSelect" class="form-label">Ürün Kategori</label>
                     <select class="form-select shadow-sm"
-                            name="CategoryId"
-                            aria-label="Default select example"
-                            id="exampleInputSelect">
+                        name="CategoryId"
+                        aria-label="Default select example"
+                        id="exampleInputSelect">
                         @foreach (var item in @ViewData["Categories"] as List<Category>)
                         {
                             <option value="@item.Id">@item.Name</option>
@@ -35,34 +33,32 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1"
-                           class="form-label">Ürün Açıklama</label>
-                    <textarea class="form-control shadow-sm"
-                              id="exampleFormControlTextarea1"
-                              name="Description"
-                              rows="3"></textarea>
+                       class="form-label">Ürün Açıklama</label>
+                    @Html.TextAreaFor(x=>x.Description,new{@class="form-control shadow-sm"})
+                    @Html.ValidationMessageFor(x=>x.Description,null,new{@class="text-danger"})
                 </div>
                 <div class="mb-3">
 
-                        <div class="form-check">
-                            <input class="form-check-input"
-                               type="radio"
-                               name="Status"
-                               value="true"
-                               id="flexRadioDefault1" />
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Açık Ürün
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input"
-                               type="radio"
-                               name="Status"
-                               value="false"
-                               id="flexRadioDefault2" />
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Kapalı Ürün
-                            </label>
-                        </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                           type="radio"
+                           name="Status"
+                           value="true"
+                           id="flexRadioDefault1" />
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Açık Ürün
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                           type="radio"
+                           name="Status"
+                           value="false"
+                           id="flexRadioDefault2" />
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Kapalı Ürün
+                        </label>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">
@@ -71,7 +67,7 @@
                 <button type="submit" class="btn btn-danger">
                     Ürünü Sil
                 </button>
-            </form>
+            }
         </div>
     </div>
 </div>
