@@ -4,18 +4,41 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<div class="row">
-    <div class="col-6">
+<div class="row mt-3 bg-white whiteRow shadow-sm mt-3">
+    <h3 class="d-flex">Mahalle listesi<a href="#"><i class="bi bi-plus-circle-fill"></i></a></h3>
+    <br />
+    <div class="col mb-3">
+        <form method="post">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Mahalle" name="searchDistrict">
+                <button class="btn btn-outline-success" type="submit" id="button-addon2">Ara</button>
+                <a class="btn btn-outline-success " href="/Region/Index" id="button-addon">Hepsini Görüntüle</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-12">
         <div class="list-group">
             @foreach (var item in Model.districts)
             {
-                <a href="#" class="list-group-item list-group-item-action">@item.Name</a>
+                <a href="/Region/Index/@item.Id" class="list-group-item list-group-item-action">@item.Name</a>
             }
         </div>
     </div>
-    <div class="col-6">
+</div>
+<div class="row mt-3 bg-white whiteRow shadow-sm mt-3">
+    <h3 class="d-flex">Sokak listesi<a href="#"><i class="bi bi-plus-circle-fill"></i></a></h3>
+    <br />
+    <div class="col mb-3">
+        <form method="post">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Sokak ara" name="searchStreet">
+                <button class="btn btn-outline-success" type="submit" id="button-addon2">Ara</button>
+                <a class="btn btn-outline-success " href="/Region/Index" id="button-addon">Hepsini Görüntüle</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-12">
         <div class="list-group">
             @foreach (var item in Model.streets)
             {
