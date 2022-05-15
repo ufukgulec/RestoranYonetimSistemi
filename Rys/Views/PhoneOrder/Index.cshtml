@@ -1,0 +1,172 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<!--Stat Start-->
+<div class="row p-0 mt-3">
+    <div class="col-md-4">
+        <div class="">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Yemeksepeti
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                40 Sipariş
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3 mt-md-0">
+        <div class="">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Getir
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                20 Sipariş
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mt-3 mt-md-0">
+        <div class="">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Trendyol
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                10 Sipariş
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Stat End-->
+<!--Tables Start-->
+<div class="row p-0 orders mt-3">
+    <div class="col">
+        <div class="accordion shadow-sm p-0"
+             id="accordionPanelsStayOpenExample1">
+            <div class="accordion-item">
+                <h2 class="accordion-header"
+                    id="panelsStayOpen-headingOne">
+                    <button class="accordion-button bg-danger text-white"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseOne1"
+                            aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne1">
+                        <b> Gelen Siparişler</b>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne1"
+                     class="accordion-collapse collapse show"
+                     aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <table class="table table-bordered align-middle text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Telefon Numarası</th>
+                                    <th scope="col">Zaman</th>
+                                    <th scope="col">Ücret</th>
+                                    <th scope="col">Detay</th>
+                                    <th scope="col">İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>5075452953</td>
+                                    <td>15.05.2022 14:00</td>
+                                    <td>20₺</td>
+                                    <td><a href="#" class="btn btn-main">İncele</a></td>
+                                    <td><a href="#" class="btn btn-success">Siparişi Tamamla</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="accordion shadow-sm p-0"
+             id="accordionPanelsStayOpenExample2">
+            <div class="accordion-item">
+                <h2 class="accordion-header"
+                    id="panelsStayOpen-headingOne">
+                    <button class="accordion-button bg-primary text-white"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseOne2"
+                            aria-expanded="true"
+                            aria-controls="panelsStayOpen-collapseOne2">
+                        <b> Giden Siparişler</b>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne2"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">First</th>
+                                    <th scope="col">Last</th>
+                                    <th scope="col">Handle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td colspan="2">Larry the Bird</td>
+                                    <td>twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Tables End-->
