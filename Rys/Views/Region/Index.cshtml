@@ -1,0 +1,26 @@
+﻿@using EntityLayer.Concrete;
+@model RegionModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="row">
+    <div class="col-6">
+        <div class="list-group">
+            @foreach (var item in Model.districts)
+            {
+                <a href="#" class="list-group-item list-group-item-action">@item.Name</a>
+            }
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="list-group">
+            @foreach (var item in Model.streets)
+            {
+                <a href="#" class="list-group-item list-group-item-action">@item.Name <span class="text-muted">(@item.District.Name)</span></a>
+            }
+        </div>
+    </div>
+</div>
