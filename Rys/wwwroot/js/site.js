@@ -11,6 +11,7 @@ function ActiveNav() {
         var selecetedMenu = window.location.pathname.split("/")[1];
         var nav = document.getElementsByClassName("nav" + selecetedMenu)[0].classList.add("active");
     }
+    
     else {
         document.getElementById("homenavlink").classList.add("active");
     }

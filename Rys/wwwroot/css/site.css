@@ -25,7 +25,12 @@ nav {
     height: 100vh !important;
     display: block !important;
 }
-
+.dropdown-item {
+    color: var(--text-muted-color);
+}
+button.nav-link{
+    background-color:#fff;
+}
 .nav-link {
     color: var(--text-muted-color);
     border-radius: 8px;
