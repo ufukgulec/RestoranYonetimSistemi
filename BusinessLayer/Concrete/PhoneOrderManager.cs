@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class PhoneOrderManager : IPhoneOrderService
+    public class PhoneOrderManager : IOrderService<PhoneOrder>
     {
-        IPhoneOrderDal _phoneOrderDal;
-        public PhoneOrderManager(IPhoneOrderDal phoneOrderDal)
+        IOrderDal<PhoneOrder> _phoneOrderDal;
+        public PhoneOrderManager(IOrderDal<PhoneOrder> phoneOrderDal)
         {
             _phoneOrderDal = phoneOrderDal;
         }

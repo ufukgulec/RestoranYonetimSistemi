@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfPhoneOrderRepository:EfGenericRepository<PhoneOrder>,IPhoneOrderDal
+    public class EfOrderRepository<T> : EfGenericRepository<T>, IOrderDal<T> where T : class
     {
     }
 }

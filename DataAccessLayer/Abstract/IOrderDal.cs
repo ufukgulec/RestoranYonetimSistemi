@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Abstract
+namespace DataAccessLayer.Abstract
 {
-    public interface IPhoneOrderService : IGenericService<PhoneOrder>
+    public interface IOrderDal<T> : IGenericDal<T> where T : class
     {
     }
 }

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using EntityLayer.Concrete
+@model List<PhoneOrder>
+@{
     ViewData["Title"] = "Index";
 }
 <!--Stat Start-->
@@ -10,10 +12,10 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Yemeksepeti
+                                Yeni Sipariş
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                40 Sipariş
+                                @Model.Where(s=>s.Status).Count() Adet
                             </div>
                         </div>
                         <div class="col-auto">
@@ -31,10 +33,10 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Getir
+                                Giden Sipariş
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                20 Sipariş
+                                @Model.Where(s=>!s.Status).Count() Adet
                             </div>
                         </div>
                         <div class="col-auto">
@@ -52,10 +54,10 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Trendyol
+                                Toplam Sipariş
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                10 Sipariş
+                                @Model.Count() Adet
                             </div>
                         </div>
                         <div class="col-auto">
@@ -101,14 +103,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>5075452953</td>
-                                    <td>15.05.2022 14:00</td>
-                                    <td>20₺</td>
-                                    <td><a href="#" class="btn btn-main">İncele</a></td>
-                                    <td><a href="#" class="btn btn-success">Siparişi Tamamla</a></td>
-                                </tr>
+                                @foreach (var item in Model.Where(s => s.Status))
+                                {
+                                    int i = 1;
+                                    <tr>
+                                        <th scope="row">@i</th>
+                                        <td>@item.PhoneNumber</td>
+                                        <td>@item.OrderTime</td>
+                                        <td>@item.Amount ₺</td>
+                                        <td><a href="#" class="btn btn-main">İncele</a></td>
+                                        <td><a href="/Complete/@item.Id" class="btn btn-success">Siparişi Tamamla</a></td>
+                                    </tr>
+                                    i++;
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -134,33 +141,31 @@
                      class="accordion-collapse collapse"
                      aria-labelledby="panelsStayOpen-headingOne">
                     <div class="accordion-body">
-                        <table class="table table-hover table-bordered">
+                        <table class="table table-bordered align-middle text-center">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
+                                    <th scope="col">Telefon Numarası</th>
+                                    <th scope="col">Zaman</th>
+                                    <th scope="col">Ücret</th>
+                                    <th scope="col">Detay</th>
+                                    <th scope="col">Sil</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td colspan="2">Larry the Bird</td>
-                                    <td>twitter</td>
-                                </tr>
+                                @foreach (var item in Model.Where(s => !s.Status))
+                                {
+                                    int i = 1;
+                                    <tr>
+                                        <th scope="row">@i</th>
+                                        <td>@item.PhoneNumber</td>
+                                        <td>@item.OrderTime</td>
+                                        <td>@item.Amount ₺</td>
+                                        <td><a href="#" class="btn btn-main">İncele</a></td>
+                                        <td><a href="#" class="btn btn-danger">Sil</a></td>
+                                    </tr>
+                                    i++;
+                                }
                             </tbody>
                         </table>
                     </div>
