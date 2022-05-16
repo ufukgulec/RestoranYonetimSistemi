@@ -13,5 +13,17 @@ namespace Rys.Controllers
             var values = orderManager.GetAll();//Günlük sipariş yap
             return View(values);
         }
+        public IActionResult Complete(int id)
+        {
+            var order = orderManager.Get(id);
+            order.Status = false;
+            orderManager.Update(order);
+            return RedirectToAction("Index");
+        }
+        public IActionResult Details(int id)
+        {
+            var order = orderManager.Get(id);
+            return View(order);
+        }
     }
 }

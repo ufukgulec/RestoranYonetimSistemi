@@ -1,0 +1,65 @@
+﻿@using EntityLayer.Concrete
+@model PhoneOrder
+@{
+    ViewData["Title"] = "Details";
+}
+<!--Action Start-->
+<div class="row mt-3 bg-white whiteRow shadow-sm">
+    <div class="col-lg-4 border-end">
+        <a href="" class="d-lg-flex d-grid">
+            <i class="bi bi-printer-fill mx-auto mx-lg-0"></i>
+            Yazdır
+        </a>
+    </div>
+    <div class="col-lg-4 border-end">
+        <a href="" class="d-lg-flex d-grid">
+            <i class="bi bi-bag-plus-fill mx-auto mx-lg-0"></i>
+            Düzenle
+        </a>
+    </div>
+    <div class="col-lg-4">
+        <a href="" class="d-lg-flex d-grid">
+            <i class="bi bi-bag-check-fill mx-auto mx-lg-0"></i>Tamamla
+        </a>
+    </div>
+</div>
+<!--Action End-->
+<!--Order Details Start-->
+<div class="row gx-3 mt-3 charts">
+    <div class="col-lg-8 ps-0">
+        <div class="p-3 bg-white whiteCol shadow-sm h-100 d-flex align-items-center">
+            <ul class="list-group w-100 fs-6">
+                <span class="mx-auto mb-1">Siparişler</span>
+                <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                    <span><b>1</b> x</span> Döner
+                    <span class="badge bg-primary rounded-pill">
+                        14 <b>₺</b>
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                    <span><b>2</b> x</span> Ayran
+                    <span class="badge bg-primary rounded-pill">6 <b>₺</b></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                    Toplam
+                    <span class="badge bg-primary rounded-pill">20 <b>₺</b></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-4 pe-0 mt-3 mt-md-0">
+        <div class="p-3 bg-white whiteCol shadow-sm h-100 d-flex align-items-center">
+            <div class="card border-0">
+                <div class="card-body">
+                    <h4>Tarih Saat</h4>
+                    <p>@Model.OrderTime</p>
+                    <h4>Telefon</h4>
+                    <p>@Model.PhoneNumber</p>
+                    <h4>Adres</h4>
+                    <p>@Model.Street.Name @Model.Street.District.Name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Order Details End-->
