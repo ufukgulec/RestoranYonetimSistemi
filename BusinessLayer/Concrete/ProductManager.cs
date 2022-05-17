@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,6 +39,11 @@ namespace BusinessLayer.Concrete
             return _productDal.Get(id);
         }
 
+        public Product Get(Expression<Func<Product, bool>> Expression)
+        {
+            return _productDal.Get(Expression);
+        }
+
         public List<Product> GetAll()
         {
             return _productDal.GetAll();
@@ -46,6 +52,11 @@ namespace BusinessLayer.Concrete
         public List<Product> GetAll(string TableName)
         {
             return _productDal.GetAll(TableName);
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>> Expression)
+        {
+            return _productDal.GetAll(Expression);
         }
 
         public List<Product> GetAllWithCategory()

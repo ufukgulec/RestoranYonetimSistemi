@@ -4,6 +4,7 @@ using DataAccessLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +34,11 @@ namespace BusinessLayer.Concrete
             return _genericDal.Get(id);
         }
 
+        public T Get(Expression<Func<T, bool>> Expression)
+        {
+            return _genericDal.Get(Expression);
+        }
+
         public List<T> GetAll()
         {
             return _genericDal.GetAll();
@@ -41,6 +47,11 @@ namespace BusinessLayer.Concrete
         public List<T> GetAll(string TableName)
         {
             return _genericDal.GetAll(TableName);
+        }
+
+        public List<T> GetAll(Expression<Func<T, bool>> Expression)
+        {
+            return _genericDal.GetAll(Expression);
         }
 
         public void Update(T entity)

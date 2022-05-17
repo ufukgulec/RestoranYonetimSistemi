@@ -6,6 +6,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,6 +35,11 @@ namespace BusinessLayer.Concrete
             return _categoryDal.Get(id);
         }
 
+        public Category Get(Expression<Func<Category, bool>> Expression)
+        {
+            return _categoryDal.Get(Expression);
+        }
+
         public List<Category> GetAll()
         {
             return _categoryDal.GetAll();
@@ -42,6 +48,11 @@ namespace BusinessLayer.Concrete
         public List<Category> GetAll(string TableName)
         {
             return _categoryDal.GetAll(TableName);
+        }
+
+        public List<Category> GetAll(Expression<Func<Category, bool>> Expression)
+        {
+            return _categoryDal.GetAll(Expression);
         }
 
         public void Update(Category entity)
