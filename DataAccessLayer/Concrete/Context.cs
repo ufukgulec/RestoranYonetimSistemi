@@ -12,13 +12,9 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=UFUK;database=Rys;integrated security=true");
+            optionsBuilder.UseSqlServer("server=UFUK;database=RysDB;integrated security=true");
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<District>().HasData(DistrictData.GetList());
-            base.OnModelCreating(modelBuilder);
-        }
+
         public DbSet<Category> Categories { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<PhoneOrder> PhoneOrders { get; set; }

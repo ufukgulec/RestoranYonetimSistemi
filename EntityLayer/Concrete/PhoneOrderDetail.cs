@@ -11,7 +11,7 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int Id { get; set; }
-        public int OrderId { get; set; }
+        public int PhoneOrderId { get; set; }
         public int ProductId { get; set; }
         public int ProductCount { get; set; }
         public PhoneOrder PhoneOrder { get; set; }

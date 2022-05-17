@@ -53,28 +53,6 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Districts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 6,
-                            Name = "^30 Ağustos"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Süvari"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "İstasyon"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Kazım Karabekir"
-                        });
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.PhoneOrder", b =>
@@ -113,10 +91,7 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PhoneOrderId")
+                    b.Property<int>("PhoneOrderId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductCount")
@@ -289,16 +264,13 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductCount")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TableOrderId")
+                    b.Property<int>("TableOrderId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -325,7 +297,9 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasOne("EntityLayer.Concrete.PhoneOrder", "PhoneOrder")
                         .WithMany("PhoneOrderDetails")
-                        .HasForeignKey("PhoneOrderId");
+                        .HasForeignKey("PhoneOrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.Product", "Product")
                         .WithMany("PhoneOrderDetails")
@@ -398,7 +372,9 @@ namespace DataAccessLayer.Migrations
 
                     b.HasOne("EntityLayer.Concrete.TableOrder", "TableOrder")
                         .WithMany("TableOrderDetails")
-                        .HasForeignKey("TableOrderId");
+                        .HasForeignKey("TableOrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
 

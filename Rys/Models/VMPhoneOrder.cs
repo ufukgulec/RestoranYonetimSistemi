@@ -28,7 +28,7 @@ namespace Rys.Models
             OrderTime = phoneOrder.OrderTime;
             Street = streetRegionManager.Get(StreetId);
             Street.District = districtRegionManager.Get(Street.DistrictId);
-            PhoneOrderDetails = detailsManager.GetAll(x => x.OrderId == Id);
+            PhoneOrderDetails = detailsManager.GetAll(x => x.PhoneOrderId == Id);
 
             foreach (var item in PhoneOrderDetails)
             {

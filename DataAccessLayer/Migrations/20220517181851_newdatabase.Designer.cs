@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220509094333_mig2")]
-    partial class mig2
+    [Migration("20220517181851_newdatabase")]
+    partial class newdatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,10 +93,7 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PhoneOrderId")
+                    b.Property<int>("PhoneOrderId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductCount")
@@ -269,16 +266,13 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductCount")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TableOrderId")
+                    b.Property<int>("TableOrderId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -305,7 +299,9 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasOne("EntityLayer.Concrete.PhoneOrder", "PhoneOrder")
                         .WithMany("PhoneOrderDetails")
-                        .HasForeignKey("PhoneOrderId");
+                        .HasForeignKey("PhoneOrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.Product", "Product")
                         .WithMany("PhoneOrderDetails")
@@ -378,7 +374,9 @@ namespace DataAccessLayer.Migrations
 
                     b.HasOne("EntityLayer.Concrete.TableOrder", "TableOrder")
                         .WithMany("TableOrderDetails")
-                        .HasForeignKey("TableOrderId");
+                        .HasForeignKey("TableOrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
 
