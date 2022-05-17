@@ -23,9 +23,9 @@ namespace Rys.Controllers
         }
         public IActionResult Details(int id)
         {
-            VMPhoneOrder phoneOrder = new VMPhoneOrder(orderManager.Get(id));
+            VMPhoneOrder vm = new VMPhoneOrder(orderManager.Get(id));
 
-            return View(phoneOrder);
+            return View(vm);
         }
     }
 }
