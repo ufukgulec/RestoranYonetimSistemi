@@ -2,6 +2,7 @@
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Rys.Models;
 
 namespace Rys.Controllers
 {
@@ -22,8 +23,9 @@ namespace Rys.Controllers
         }
         public IActionResult Details(int id)
         {
-            var order = orderManager.Get(id);
-            return View(order);
+            VMPhoneOrder phoneOrder = new VMPhoneOrder(orderManager.Get(id));
+
+            return View(phoneOrder);
         }
     }
 }
