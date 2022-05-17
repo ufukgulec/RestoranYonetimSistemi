@@ -46,6 +46,10 @@
                             </span>
                         </li>
                     }
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                        Toplam
+                        <span class="badge bg-primary rounded-pill">@Model.Amount <b>₺</b></span>
+                    </li>
                 </ul>
             </div>
 
@@ -56,11 +60,11 @@
             <div class="card border-0">
                 <div class="card-body">
                     <h4>Tarih Saat</h4>
-                    <p>@Model.OrderTime</p>
-                    <h4>Telefon</h4>
+                    <p>@Model.OrderTime @{DateTime.Now.Add(-Model.OrderTime.TimeOfDay);}</p>
+                    <h4>Müşteri Telefonu</h4>
                     <p>@Model.PhoneNumber</p>
                     <h4>Adres</h4>
-                    <p>@Model.Street.Name @Model.Street.District.Name</p>
+                    <p>@Model.Street.District.Name Mahallesi @Model.Street.Name Sokak </p>
                 </div>
             </div>
         </div>
