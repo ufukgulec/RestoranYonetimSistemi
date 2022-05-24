@@ -61,5 +61,21 @@ namespace Rys.Controllers
             }
 
         }
+
+        public IActionResult Status(int id)
+        {
+            var category = categoryManager.Get(id);
+            if (categoryManager.Get(id).Status)
+            {
+                category.Status = false;
+
+            }
+            else
+            {
+                category.Status = true;
+            }
+            categoryManager.Update(category);
+            return RedirectToAction("Index");
+        }
     }
 }

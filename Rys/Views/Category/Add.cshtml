@@ -4,59 +4,59 @@
     ViewData["Title"] = "Add";
 }
 
-<div class="container-fluid p-0 p-md-3">
-    <div class="row p-0 mt-3">
-        <div class="col">
-            @using (Html.BeginForm("Add", "Category", FormMethod.Post))
-            {
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Kategori Adı</label>
-                    @*                    <input type="text"
-                        class="form-control shadow-sm"
-                        id="exampleInputPassword1"
-                        name="Name" />*@
-                    @Html.TextBoxFor(x=>x.Name,new{@class="form-control shadow-sm"})
-                    @Html.ValidationMessageFor(x=>x.Name,null,new{@class="text-danger"})
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1"
-                       class="form-label">Kategori Açıklama</label>
-                    @*                    <textarea class="form-control shadow-sm"
-                        id="exampleFormControlTextarea1"
-                        name="Description"
-                        rows="3"></textarea>*@
-                    @Html.TextAreaFor(x=>x.Description,new{@class="form-control shadow-sm"})
-                    @Html.ValidationMessageFor(x=>x.Description)
-                </div>
-                <div class="mb-3">
-                    <div class="form-check">
-                        <input class="form-check-input"
-                           type="radio"
-                           name="Status"
-                           value="true"
-                           id="flexRadioDefault1" />
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Açık Kategori
-                        </label>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="col-xxl">
+        <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">Kategori Ekle</h5>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Add", "Category", FormMethod.Post))
+                {
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Kategori Adı</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                    <i class="bx bx-category"></i>
+                                </span>
+
+
+                                @Html.TextBoxFor(x=>x.Name,new{@class="form-control",@id="basic-icon-default-fullname"})
+
+                            </div>
+                            @Html.ValidationMessageFor(x=>x.Name,null,new{@class="text-danger"})
+                        </div>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input"
-                           type="radio"
-                           name="Status"
-                           value="false"
-                           id="flexRadioDefault2" />
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Kapalı Kategori
-                        </label>
+
+                    <div class="row mb-3">
+                        <label class="col-sm-2 form-label" for="basic-icon-default-message">Kategori Açıklaması</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-message2" class="input-group-text">
+                                    <i class="bx bx-comment"></i>
+                                </span>
+
+                                @Html.TextAreaFor(x=>x.Description,new{@class="form-control",@id="basic-icon-default-message",@rows="1"})
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-primary">
-                    Kaydet
-                </button>
-                <button type="reset" class="btn btn-danger">
-                    Temizle
-                </button>
-            }
+                    <div class="row justify-content-end">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-success">
+                                <span class="tf-icons bx bx-plus"></span>Ekle
+                                </button>
+                            <button type="reset" class="btn btn-danger">
+                                <span class="tf-icons bx bx-brush-alt"></span>Temizle
+                                </button>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
+    </div>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        Eklemeye çalıştığınız kategori mevcut
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 </div>

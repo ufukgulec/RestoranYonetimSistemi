@@ -3,53 +3,66 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<div class="container-fluid position-relative p-0 p-md-3">
-    <!--Tables Start-->
-    <div class="row p-0 mt-3">
-        <div class="col ps-0 whiteCol bg-white">
-            <table class="table table-hover table-bordered align-middle text-center">
+<div class="container-xxl flex-grow-1 container-p-y">
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <h5 class="card-header">Kategoriler</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Kategori Adı</th>
-                        <th scope="col">Ürün Sayısı</th>
-                        <th scope="col">Durumu</th>
-                        <th scope="col">Güncelle</th>
-                        <th scope="col">Sil</th>
+                        <th>Kategori Adı</th>
+                        <th>Kategori Açıklaması</th>
+                        <th>Ürün Sayısı</th>
+                        <th>Durumu</th>
+                        <th>İşlem</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-border-bottom-0">
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <th>@item.Name</th>
-                            <th>@item.Products.Count</th>
                             <td>
-                                @if (item.Status)
-                                {
-                                    <span class="badge alert-success">Açık Kategori</span>
-                                }
-                                else
-                                {
-                                    <span class="badge alert-danger">Kapalı Kategori</span>
-                                }
+                                <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>@item.Name</strong>
+                            </td>
+                            <td>@item.Description</td>
+                            <td>@item.Products.Count</td>
+                            @if (item.Status)
+                            {
+                                <td><span class="badge bg-label-success me-1">Aktif</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="badge bg-label-danger me-1">Kapalı</span></td>
+                            }
 
-                            </td>
                             <td>
-                                <a href="/Category/Details/@item.Id"
-                               class="btn btn-main text-white w-100">Güncelle</a>
-                            </td>
-                            <td>
-                                <a href="/Category/Delete/@item.Id"
-                               class="btn btn-danger text-white w-100">Sil</a>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        @if (item.Status)
+                                        {
+                                            <a class="dropdown-item" href="/Category/Status/@item.Id"><i class="bx bx-lock-alt me-2"></i> Kategoriyi Kapat</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="dropdown-item" href="/Category/Status/@item.Id"><i class="bx bx-lock-open-alt me-2"></i> Kategoriyi Aç</a>
+                                        }
+                                        <a class="dropdown-item" href="/Category/Details/@item.Id"><i class="bx bx-edit-alt me-2"></i> Düzenle</a>
+                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i> Delete</a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     }
-
                 </tbody>
             </table>
-            <a href="/Category/Add/" class="btn btn-success text-white w-100">Yeni Kategori Oluştur</a>
         </div>
     </div>
-    <!--Tables End-->
+    <!--/ Basic Bootstrap Table -->
+    <a href="/Category/Add" class="btn btn-primary mt-3 w-100">
+        <span class="tf-icons bx bx-plus-circle"></span>&nbsp; Kategori Ekle
+    </a>
 </div>

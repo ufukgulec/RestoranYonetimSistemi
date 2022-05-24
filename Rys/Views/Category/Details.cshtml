@@ -3,86 +3,60 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="col-xxl">
+        <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">Kategori Ekle</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" value="@Model.Id" name="Id" />
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Kategori Adı</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                    <i class="bx bx-category"></i>
+                                </span>
+                                <input type="text"
+                                       class="form-control"
+                                       id="basic-icon-default-fullname"
+                                       name="Name"
+                                       value="@Model.Name"
+                                       aria-describedby="basic-icon-default-fullname2" />
+                            </div>
+                        </div>
+                    </div>
 
-<div class="container-fluid p-0 p-md-3">
-    <div class="row p-0 mt-3">
-        <div class="col">
-            <form method="post">
-                <input type="hidden" value="@Model.Id" name="Id" />
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Kategori Adı</label>
-                    <input type="text"
-                           class="form-control shadow-sm"
-                           id="exampleInputPassword1"
-                           name="Name"
-                           value="@Model.Name" />
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1"
-                           class="form-label">Kategori Açıklama</label>
-                    <textarea class="form-control shadow-sm"
-                              id="exampleFormControlTextarea1"
-                              name="Description"
-                              rows="3">@Model.Description</textarea>
-                </div>
-                <div class="mb-3">
-                    @if (Model.Status)
-                    {
-                        <div class="form-check">
-                            <input class="form-check-input"
-                               type="radio"
-                               name="Status"
-                               value="true"
-                               checked
-                               id="flexRadioDefault1" />
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Açık Kategori
-                            </label>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 form-label" for="basic-icon-default-message">Kategori Açıklaması</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-message2" class="input-group-text">
+                                    <i class="bx bx-comment"></i>
+                                </span>
+                                <textarea id="basic-icon-default-message"
+                                          class="form-control"
+                                          rows="1"
+                                          name="Description"
+                                          aria-label="Hi, Do you have a moment to talk Joe?"
+                                          aria-describedby="basic-icon-default-message2">@Model.Description</textarea>
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input"
-                               type="radio"
-                               name="Status"
-                               value="false"
-                               id="flexRadioDefault2" />
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Kapalı Kategori
-                            </label>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="tf-icons bx bx-check"></span>Tamamla
+                            </button>
+                            <a href="/Category/Index" class="btn btn-warning">
+                            <span class="tf-icons bx bx-arrow-back"></span>Geri    
+                            </a>
                         </div>
-                    }
-                    else
-                    {
-                        <div class="form-check">
-                            <input class="form-check-input"
-                               type="radio"
-                               name="Status"
-                               value="true"
-                               id="flexRadioDefault1" />
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Açık Kategori
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input"
-                               type="radio"
-                               checked
-                               name="Status"
-                               value="false"
-                               id="flexRadioDefault2" />
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Kapalı Kategori
-                            </label>
-                        </div>
-                    }
-                </div>
-
-                <button type="submit" class="btn btn-primary">
-                    Kaydet
-                </button>
-                <button type="submit" class="btn btn-danger">
-                    Kategoriyi Sil
-                </button>
-            </form>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
