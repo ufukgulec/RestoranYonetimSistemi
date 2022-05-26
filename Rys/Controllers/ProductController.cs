@@ -58,6 +58,21 @@ namespace Rys.Controllers
                 return View();
             }
         }
+        public IActionResult Status(int id)
+        {
+            var product = productManager.Get(id);
+            if (product.Status)
+            {
+                product.Status = false;
+
+            }
+            else
+            {
+                product.Status = true;
+            }
+            productManager.Update(product);
+            return RedirectToAction("Index");
+        }
         public IActionResult Delete(int id)
         {
             productManager.Delete(productManager.Get(id));
