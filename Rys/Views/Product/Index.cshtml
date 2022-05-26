@@ -106,7 +106,7 @@
                                                         }
                                                     </td>
                                                     <td>
-                                                        <div class="dropdown">
+                                                        <div class="dropdown" style="position:inherit">
                                                             <button type="button"
                                                             class="btn p-0 dropdown-toggle hide-arrow"
                                                             data-bs-toggle="dropdown">
@@ -115,19 +115,19 @@
                                                             <div class="dropdown-menu">
                                                                 @if (item.Status)
                                                                 {
-                                                                    <a class="dropdown-item" href="/Product/Status/@item.Id"><i class="bx bx-lock-alt me-2"></i> Ürünü Kapat</a>
+                                                                    <a class="dropdown-item" href="/Product/Status/@item.Id"><i class="bx bx-lock-alt text-warning me-2"></i> Ürünü Kapat</a>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <a class="dropdown-item" href="/Product/Status/@item.Id"><i class="bx bx-lock-open-alt me-2"></i> Ürünü Aç</a>
+                                                                    <a class="dropdown-item" href="/Product/Status/@item.Id"><i class="bx bx-lock-open-alt text-success me-2"></i> Ürünü Aç</a>
                                                                 }
                                                                 <a class="dropdown-item"
                                                            href="/Product/Details/@item.Id">
-                                                                    <i class="bx bx-edit-alt me-2"></i>
+                                                                    <i class="bx bx-edit-alt text-primary me-2"></i>
                                                                     Düzenle
                                                                 </a>
-                                                                <a class="dropdown-item"
-                                                           href="javascript:void(0);">
+                                                                <a class="dropdown-item text-danger"
+                                                           href="/Product/Delete/@item.Id">
                                                                     <i class="bx bx-trash me-2"></i>
                                                                     Sil
                                                                 </a>
