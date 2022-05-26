@@ -15,7 +15,7 @@ namespace Rys.Models
         public RegionModel()
         {
             districts = districtRegionManager.GetAll();
-            streets = streetRegionManager.GetAll("District");
+            //streets = streetRegionManager.GetAll("District");
         }
     }
 }

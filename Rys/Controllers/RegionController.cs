@@ -12,14 +12,15 @@ namespace Rys.Controllers
     {
         RegionManager<District> districtRegionManager = new RegionManager<District>(new EfGenericRepository<District>());
         RegionManager<Street> streetRegionManager = new RegionManager<Street>(new EfGenericRepository<Street>());
-        public IActionResult Index(string searchDistrict, string searchStreet, int? id)
+        public IActionResult Index(string searchDistrict, string searchStreet)
         {
             RegionModel regionModel = new RegionModel();
             if (!string.IsNullOrEmpty(searchDistrict))
             {
                 if (regionModel.districts.Where(d => d.Name.ToLower(new CultureInfo("en-US", false)).Contains(searchDistrict.ToLower(new CultureInfo("en-US", false)))).ToList().Count > 0)
                 {
-                    regionModel.districts = regionModel.districts.Where(d => d.Name.ToLower(new CultureInfo("en-US", false)).Contains(searchDistrict.ToLower())).ToList();
+                    District district = regionModel.districts.Where(d => d.Name.ToLower(new CultureInfo("en-US", false)).Contains(searchDistrict.ToLower())).First();
+                    regionModel.streets = streetRegionManager.GetAll(d => d.DistrictId == district.Id).ToList();
                 }
 
             }
@@ -29,10 +30,6 @@ namespace Rys.Controllers
                 {
                     regionModel.streets = regionModel.streets.Where(d => d.Name.ToLower(new CultureInfo("en-US", false)).Contains(searchStreet.ToLower())).ToList();
                 }
-            }
-            else if (id != null)
-            {
-                regionModel.streets = regionModel.streets.Where(d => d.DistrictId == id).ToList();
             }
 
             return View(regionModel);
