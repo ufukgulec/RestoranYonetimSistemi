@@ -3,71 +3,130 @@
 @{
     ViewData["Title"] = "Details";
 }
-<!--Action Start-->
-<div class="row mt-3 bg-white whiteRow shadow-sm">
-    <div class="col-lg-4 border-end">
-        <a href="" class="d-lg-flex d-grid">
-            <i class="bi bi-printer-fill mx-auto mx-lg-0"></i>
-            Yazdır
-        </a>
-    </div>
-    <div class="col-lg-4 border-end">
-        <a href="" class="d-lg-flex d-grid">
-            <i class="bi bi-bag-plus-fill mx-auto mx-lg-0"></i>
-            Düzenle
-        </a>
-    </div>
-    <div class="col-lg-4">
-        <a href="/PhoneOrder/Complete/@Model.Id" class="d-lg-flex d-grid">
-            <i class="bi bi-bag-check-fill mx-auto mx-lg-0"></i>Tamamla
-        </a>
-    </div>
-</div>
-<!--Action End-->
-<!--Order Details Start-->
-<div class="row gx-3 mt-3 charts">
-    <div class="col-lg-8 ps-0">
-        <div class="p-3 bg-white whiteCol shadow-sm h-100 d-flex align-items-center">
-
-            <div class="w-100">
-                <h4 class="mx-auto mb-1 text-center">Siparişler</h4>
-                <ul class="list-group w-100 fs-6">
-                    @foreach (var item in Model.PhoneOrderDetails)
-                    {
-                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
-                            <span><b>@item.ProductCount</b> x</span> @item.Product.Name
-                            <span class="badge bg-primary rounded-pill">
-                                @{
-                                    int price = Convert.ToInt32(item.Product.Price);
-                                    int count = item.ProductCount;
-                                    int amount = price * count;
-                                }
-                                @amount <b>₺</b>
-                            </span>
-                        </li>
-                    }
-                    <li class="list-group-item d-flex justify-content-between align-items-center py-3">
-                        Toplam
-                        <span class="badge bg-primary rounded-pill">@Model.Amount <b>₺</b></span>
-                    </li>
-                </ul>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-lg-12 mb-4 order-0">
+            <div class="card">
+                <div class="d-flex align-items-end row">
+                    <div class="col-sm-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Sipariş İşlemleri</h5>
+                            <div class="card-subtitle text-muted mb-3">İşlemleri burdan halledebilirsiniz...</div>
+                            <p class="card-text">
+                                Sipariş tamamlama, Yazdırma, Düzenleme
+                            </p>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class='bx bxl-dropbox'></i>
+                                    İşlem Seç
+                                </button>
+                                <ul class="dropdown-menu" style="">
+                                    <li><a class="dropdown-item" href="javascript:void(0);">Tamamla</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0);">Yazdır</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0);">Düzenle</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Müşteri Telefonu</h5>
+                            <div class="card-subtitle text-muted mb-3">Card subtitle</div>
+                            <p class="card-text">
+                                @Model.PhoneNumber
+                            </p>
+                            <a href="javascript:void(0)" class="btn btn-primary">
+                                <i class='bx bx-plus-circle'></i>
+                                Telefonu Ekle
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Adres</h5>
+                            <div class="card-subtitle text-muted mb-3">Card subtitle</div>
+                            <p class="card-text">
+                                @Model.Street.District.Name Mahallesi @Model.Street.Name Sokak
+                            </p>
+                            <a href="javascript:void(0)" class="btn btn-primary">
+                                <i class='bx bx-plus-circle'></i>Adresi Ekle
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-    </div>
-    <div class="col-lg-4 pe-0 mt-3 mt-md-0">
-        <div class="p-3 bg-white whiteCol shadow-sm h-100 d-flex align-items-center">
-            <div class="card border-0">
-                <div class="card-body">
-                    <h4>Tarih Saat</h4>
-                    <p>@Model.OrderTime @{DateTime.Now.Add(-Model.OrderTime.TimeOfDay);}</p>
-                    <h4>Müşteri Telefonu</h4>
-                    <p>@Model.PhoneNumber</p>
-                    <h4>Adres</h4>
-                    <p>@Model.Street.District.Name Mahallesi @Model.Street.Name Sokak </p>
+        <div class="col-lg-8 mb-4 order-0">
+            <div class="card">
+                <h5 class="card-header">Siparişler</h5>
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Ürün Adeti</th>
+                                <th>Ürün Adı</th>
+                                <th>Fiyat</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach (var item in Model.PhoneOrderDetails)
+                            {
+                                <tr>
+                                    <td>@item.ProductCount x</td>
+                                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.Product.Name</strong></td>
+                                    @{
+                                        int price = Convert.ToInt32(item.Product.Price);
+                                        int count = item.ProductCount;
+                                        int amount = price * count;
+                                    }
+                                    <td>
+                                        @amount <b>₺</b>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 order-1">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <i class='bx bx-store-alt text-primary'></i>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Sipariş Toplam Tutarı</span>
+                            <h3 class="card-title mb-2">@Model.Amount ₺</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!--Order Details End-->

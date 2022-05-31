@@ -3,175 +3,204 @@
 @{
     ViewData["Title"] = "Index";
 }
-<!--Stat Start-->
-<div class="row p-0 mt-3">
-    <div class="col-md-4">
-        <div class="">
-            <div class="card border-left-danger shadow h-100 py-2">
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12 col-md-4 mb-3">
+            <div class="card">
                 <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Yeni Sipariş
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                @Model.Where(s=>s.Status).Count() Adet
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    <div class="card-title d-flex align-items-start justify-content-between">
+                        <div class="avatar flex-shrink-0">
+                            <i class="bx bx-up-arrow-circle text-success"></i>
                         </div>
                     </div>
+                    <span class="d-block mb-1">Yeni Sipariş</span>
+                    <h3 class="card-title text-nowrap mb-2">
+                        @Model.Where(s=>s.Status).Count() Adet
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title d-flex align-items-start justify-content-between">
+                        <div class="avatar flex-shrink-0">
+                            <i class="bx bx-down-arrow-circle text-danger"></i>
+                        </div>
+                    </div>
+                    <span class="d-block mb-1">Giden Sipariş</span>
+                    <h3 class="card-title text-nowrap mb-2">
+                        @Model.Where(s=>!s.Status).Count() Adet
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title d-flex align-items-start justify-content-between">
+                        <div class="avatar flex-shrink-0">
+                            <i class="bx bxs-bar-chart-alt-2 text-primary"></i>
+                        </div>
+                    </div>
+                    <span class="d-block mb-1">Toplam Sipariş</span>
+                    <h3 class="card-title text-nowrap mb-2">
+                        @Model.Count() Adet
+                    </h3>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4 mt-3 mt-md-0">
-        <div class="">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Giden Sipariş
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                @Model.Where(s=>!s.Status).Count() Adet
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 mt-3 mt-md-0">
-        <div class="">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Toplam Sipariş
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                @Model.Count() Adet
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Stat End-->
-<!--Tables Start-->
-<div class="row p-0 orders mt-3">
-    <div class="col">
-        <div class="accordion shadow-sm p-0"
-             id="accordionPanelsStayOpenExample1">
-            <div class="accordion-item">
-                <h2 class="accordion-header"
-                    id="panelsStayOpen-headingOne">
-                    <button class="accordion-button bg-danger text-white"
-                            type="button"
+    <div class="col-md mb-4 mb-md-0">
+        <div class="accordion mt-3" id="accordionExample">
+            <div class="card accordion-item active">
+                <h2 class="accordion-header" id="headingOne">
+                    <button type="button"
+                            class="accordion-button"
                             data-bs-toggle="collapse"
-                            data-bs-target="#panelsStayOpen-collapseOne1"
-                            aria-expanded="true"
-                            aria-controls="panelsStayOpen-collapseOne1">
-                        <b> Gelen Siparişler</b>
+                            data-bs-target="#yeni"
+                            aria-expanded="false"
+                            aria-controls="yeni">
+
+                        Yeni Gelen Siparişler
                     </button>
                 </h2>
-                <div id="panelsStayOpen-collapseOne1"
-                     class="accordion-collapse collapse show"
-                     aria-labelledby="panelsStayOpen-headingOne">
-                    <div class="accordion-body">
-                        <table class="table table-bordered align-middle text-center">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Telefon Numarası</th>
-                                    <th scope="col">Zaman</th>
-                                    <th scope="col">Ücret</th>
-                                    <th scope="col">Detay</th>
-                                    <th scope="col">İşlem</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Where(s => s.Status))
-                                {
-                                    int i = 1;
-                                    <tr>
-                                        <th scope="row">@i</th>
-                                        <td>@item.PhoneNumber</td>
-                                        <td>@item.OrderTime</td>
-                                        <td>@item.Amount ₺</td>
-                                        <td><a href="/PhoneOrder/Details/@item.Id" class="btn btn-main">İncele</a></td>
-                                        <td><a href="/PhoneOrder/Complete/@item.Id" class="btn btn-success">Siparişi Tamamla</a></td>
-                                    </tr>
-                                    i++;
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br />
-        <div class="accordion shadow-sm p-0"
-             id="accordionPanelsStayOpenExample2">
-            <div class="accordion-item">
-                <h2 class="accordion-header"
-                    id="panelsStayOpen-headingOne">
-                    <button class="accordion-button bg-primary text-white"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#panelsStayOpen-collapseOne2"
-                            aria-expanded="true"
-                            aria-controls="panelsStayOpen-collapseOne2">
-                        <b> Giden Siparişler</b>
-                    </button>
-                </h2>
-                <div id="panelsStayOpen-collapseOne2"
+
+                <div id="yeni"
                      class="accordion-collapse collapse"
-                     aria-labelledby="panelsStayOpen-headingOne">
+                     aria-labelledby="yeni"
+                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <table class="table table-bordered align-middle text-center">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Telefon Numarası</th>
-                                    <th scope="col">Zaman</th>
-                                    <th scope="col">Ücret</th>
-                                    <th scope="col">Detay</th>
-                                    <th scope="col">Sil</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Where(s => !s.Status))
-                                {
-                                    int i = 1;
-                                    <tr>
-                                        <th scope="row">@i</th>
-                                        <td>@item.PhoneNumber</td>
-                                        <td>@item.OrderTime</td>
-                                        <td>@item.Amount ₺</td>
-                                        <td><a href="/PhoneOrder/Details/@item.Id" class="btn btn-main">İncele</a></td>
-                                        <td><a href="#" class="btn btn-danger">Sil</a></td>
-                                    </tr>
-                                    i++;
-                                }
-                            </tbody>
-                        </table>
+                        <!-- Basic Bootstrap Table -->
+                        <div class="card1">
+                            <h5 class="card-header">Ürünler</h5>
+                            <div class="table-responsive text-nowrap">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Müşteri Numarası</th>
+                                            <th>Sipariş Zamanı</th>
+                                            <th>Sipariş Tutarı</th>
+                                            <th>İşlem</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                        @foreach (var item in Model.Where(s => s.Status))
+                                        {
+                                            int i = 1;
+                                            <tr>
+                                                <th scope="row">@i</th>
+                                                <td>@item.PhoneNumber</td>
+                                                <td>@item.OrderTime</td>
+                                                <td>@item.Amount ₺</td>
+                                                <td>
+                                                    <div class="dropdown" style="position:inherit">
+                                                        <button type="button"
+                                                            class="btn p-0 dropdown-toggle hide-arrow"
+                                                            data-bs-toggle="dropdown">
+                                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+
+                                                            <a class="dropdown-item" href="/PhoneOrder/Complete/@item.Id"><i class="bx bxs-truck text-success me-2"></i> Siparişi Tamamla</a>
+
+                                                            <a class="dropdown-item"
+                                                           href="/PhoneOrder/Details/@item.Id">
+                                                                <i class="bx bx-edit-alt text-primary me-2"></i>
+                                                                İncele
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            i++;
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--/ Basic Bootstrap Table -->
                     </div>
                 </div>
             </div>
         </div>
+        <div class="accordion mt-3" id="accordionExample">
+            <div class="card accordion-item active">
+                <h2 class="accordion-header" id="headingOne">
+                    <button type="button"
+                            class="accordion-button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#eski"
+                            aria-expanded="false"
+                            aria-controls="eski">
+
+                        Giden Siparişler
+                    </button>
+                </h2>
+
+                <div id="eski"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="eski"
+                     data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <!-- Basic Bootstrap Table -->
+                        <div class="card1">
+                            <h5 class="card-header">Ürünler</h5>
+                            <div class="table-responsive text-nowrap">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Müşteri Numarası</th>
+                                            <th>Sipariş Zamanı</th>
+                                            <th>Sipariş Tutarı</th>
+                                            <th>İşlem</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                        @foreach (var item in Model.Where(s => s.Status))
+                                        {
+                                            int i = 1;
+                                            <tr>
+                                                <th scope="row">@i</th>
+                                                <td>@item.PhoneNumber</td>
+                                                <td>@item.OrderTime</td>
+                                                <td>@item.Amount ₺</td>
+                                                <td>
+                                                    <div class="dropdown" style="position:inherit">
+                                                        <button type="button"
+                                                            class="btn p-0 dropdown-toggle hide-arrow"
+                                                            data-bs-toggle="dropdown">
+                                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item"
+                                                               href="/PhoneOrder/Details/@item.Id">
+                                                                    <i class="bx bx-edit-alt text-primary me-2"></i>
+                                                                    İncele
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            i++;
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--/ Basic Bootstrap Table -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
-<!--Tables End-->
