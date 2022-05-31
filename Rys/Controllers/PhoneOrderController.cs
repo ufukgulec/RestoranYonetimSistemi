@@ -27,5 +27,9 @@ namespace Rys.Controllers
 
             return View(vm);
         }
+        public IActionResult Add()
+        {
+            return View();
+        }
     }
 }

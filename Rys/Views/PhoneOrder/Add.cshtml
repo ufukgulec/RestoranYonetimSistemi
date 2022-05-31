@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Add";
+}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <!-- Accordion -->
+    <div class="row">
+        <div class="col-md">
+            <small class="text-light fw-semibold">Telefon siparişi</small>
+            <div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
+                <form class="">
+                    <div class="accordion-item card active mb-3">
+                        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconOne">
+                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-1" aria-controls="accordionIcon-1" aria-expanded="false">
+                                1. Telefon numarası giriniz
+                            </button>
+                        </h2>
+
+                        <div id="accordionIcon-1" class="accordion-collapse collapse show" data-bs-parent="#accordionIcon" style="">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <label for="html5-tel-input" class="col-md-2 col-form-label">Telefon Numarası</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" type="tel" placeholder="5075452953" id="html5-tel-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item card mb-3">
+                        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconTwo">
+                            <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionIcon-2" aria-controls="accordionIcon-2" aria-expanded="true">
+                                2. Adres seçiniz
+                            </button>
+                        </h2>
+                        <div id="accordionIcon-2" class="accordion-collapse collapse" data-bs-parent="#accordionIcon" style="">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <label for="exampleDataList" class="col-md-2 form-label col-form-label">Sokak</label>
+                                    <div class="col-md-10">
+                                        <select id="defaultSelect" class="form-select">
+                                            <option>Default select</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item card mb-3">
+                        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconThree">
+                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-3" aria-expanded="false" aria-controls="accordionIcon-3">
+                                3. Ürün seçiniz
+                            </button>
+                        </h2>
+                        <div id="accordionIcon-3" class="accordion-collapse collapse" data-bs-parent="#accordionIcon" style="">
+                            <div class="accordion-body">
+                                Ürünler
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item card mb-3">
+                        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconThree">
+                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-4" aria-expanded="false" aria-controls="accordionIcon-3">
+                                4. Siparişi onaylayınız
+                            </button>
+                        </h2>
+                        <div id="accordionIcon-4" class="accordion-collapse collapse" data-bs-parent="#accordionIcon" style="">
+                            <div class="accordion-body">
+                                <button type="button" class="btn btn-primary">
+                                    <span class="tf-icons bx bx-checkbox-checked"></span>&nbsp; Onayla
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <span class="tf-icons bx bx-x-circle"></span>&nbsp; Temizle
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/ Accordion -->
+    <!--/ Advance Styling Options -->
+</div>
