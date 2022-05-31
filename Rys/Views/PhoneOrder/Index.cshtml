@@ -57,7 +57,7 @@
             <div class="card accordion-item active">
                 <h2 class="accordion-header" id="headingOne">
                     <button type="button"
-                            class="accordion-button"
+                            class="accordion-button text-success"
                             data-bs-toggle="collapse"
                             data-bs-target="#yeni"
                             aria-expanded="false"
@@ -131,7 +131,7 @@
             <div class="card accordion-item active">
                 <h2 class="accordion-header" id="headingOne">
                     <button type="button"
-                            class="accordion-button"
+                            class="accordion-button text-danger"
                             data-bs-toggle="collapse"
                             data-bs-target="#eski"
                             aria-expanded="false"
@@ -161,11 +161,10 @@
                                         </tr>
                                     </thead>
                                     <tbody class="table-border-bottom-0">
-                                        @foreach (var item in Model.Where(s => s.Status))
+                                        @foreach (var item in Model.Where(s => !s.Status))
                                         {
-                                            int i = 1;
                                             <tr>
-                                                <th scope="row">@i</th>
+                                                <th scope="row">@item.Id</th>
                                                 <td>@item.PhoneNumber</td>
                                                 <td>@item.OrderTime</td>
                                                 <td>@item.Amount ₺</td>
@@ -177,20 +176,15 @@
                                                             <i class="bx bx-dots-vertical-rounded"></i>
                                                         </button>
                                                         <div class="dropdown-menu">
-
-                                                            <div class="dropdown-menu">
-                                                                <a class="dropdown-item"
-                                                               href="/PhoneOrder/Details/@item.Id">
-                                                                    <i class="bx bx-edit-alt text-primary me-2"></i>
-                                                                    İncele
-                                                                </a>
-                                                            </div>
+                                                            <a class="dropdown-item"
+                                                           href="/PhoneOrder/Details/@item.Id">
+                                                                <i class="bx bx-edit-alt text-primary me-2"></i>
+                                                                İncele
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </td>
-
                                             </tr>
-                                            i++;
                                         }
                                     </tbody>
                                 </table>
