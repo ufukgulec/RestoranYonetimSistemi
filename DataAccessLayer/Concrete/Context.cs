@@ -12,7 +12,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=UFUK;database=RysDB;integrated security=true");
+            optionsBuilder.UseSqlServer("server=UFUK;database=Rys;integrated security=true");
         }
 
         public DbSet<Category> Categories { get; set; }
@@ -26,5 +26,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<Table> Tables { get; set; }
         public DbSet<TableOrder> TableOrders { get; set; }
         public DbSet<TableOrderDetail> TableOrdersDetails { get; set; }
+        public DbSet<Customer> Customers { get; set; }
     }
 }

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class Street
+    public class Customer
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int DistrictId { get; set; }
-        public District District { get; set; }
-        public List<Customer> Customers { get; set; }
+        public int StreetId { get; set; }
+        public Street Street { get; set; }
+        public string PhoneNumber { get; set; }
+        public List<PhoneOrder> phoneOrders { get; set; }
     }
 }

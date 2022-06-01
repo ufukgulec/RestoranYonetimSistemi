@@ -12,11 +12,9 @@ namespace EntityLayer.Concrete
         [Key]
         public int Id { get; set; }
         public DateTime OrderTime { get; set; }
-        public decimal Amount { get; set; }
         public bool Status { get; set; }
-        public string PhoneNumber { get; set; }
-        public int StreetId { get; set; }
-        public Street Street { get; set; }
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
         public List<PhoneOrderDetail> PhoneOrderDetails { get; set; }
     }
 }

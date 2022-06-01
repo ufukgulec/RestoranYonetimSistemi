@@ -21,15 +21,9 @@ namespace Rys.Models
         public VMPhoneOrder(PhoneOrder phoneOrder)
         {
             Id = phoneOrder.Id;
-            PhoneNumber = phoneOrder.PhoneNumber;
-            StreetId = phoneOrder.StreetId;
             Status = phoneOrder.Status;
-            Amount = phoneOrder.Amount;
             OrderTime = phoneOrder.OrderTime;
-            Street = streetRegionManager.Get(StreetId);
-            Street.District = districtRegionManager.Get(Street.DistrictId);
             PhoneOrderDetails = detailsManager.GetAll(x => x.PhoneOrderId == Id);
-
             foreach (var item in PhoneOrderDetails)
             {
                 item.Product = productManager.Get(item.ProductId);
