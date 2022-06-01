@@ -14,7 +14,7 @@ namespace Rys.Controllers
         RegionManager<Street> streetRegionManager = new RegionManager<Street>(new EfGenericRepository<Street>());
         public IActionResult Index(string searchDistrict, string searchStreet)
         {
-            RegionModel regionModel = new RegionModel();
+            VMRegion regionModel = new VMRegion();
             if (!string.IsNullOrEmpty(searchDistrict))
             {
                 if (regionModel.districts.Where(d => d.Name.ToLower(new CultureInfo("en-US", false)).Contains(searchDistrict.ToLower(new CultureInfo("en-US", false)))).ToList().Count > 0)
