@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Add";
 }
+@using EntityLayer.Concrete;
+@model List<PhoneOrder>
+
 <div class="container-xxl flex-grow-1 container-p-y">
     <!-- Accordion -->
     <div class="row">
@@ -20,7 +23,13 @@
                                 <div class="row">
                                     <label for="html5-tel-input" class="col-md-2 col-form-label">Telefon Numarası</label>
                                     <div class="col-md-10">
-                                        <input class="form-control" type="tel" placeholder="5075452953" id="html5-tel-input">
+                                        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                                        <datalist id="datalistOptions">
+                                            @foreach (var item in Model)
+                                            {
+                                                <option value="@item.PhoneNumber"></option>
+                                            }
+                                        </datalist>
                                     </div>
                                 </div>
                             </div>

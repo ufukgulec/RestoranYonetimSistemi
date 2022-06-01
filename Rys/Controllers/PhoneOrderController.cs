@@ -27,9 +27,12 @@ namespace Rys.Controllers
 
             return View(vm);
         }
-        public IActionResult Add()
+        public IActionResult Add() // Sipariş tablosu için telefon, Sokak id alınması lazım sipariş detay için ürün id ve adeti alınması lazım
         {
-            return View();
+            //PhoneOrder tablosuna ekleme yapılacak sonra PhoneOrderDetails tablosuna PhoneOrder id ile ürün eklemesi yapılacak.
+
+
+            return View(orderManager.GetAll());
         }
     }
 }
