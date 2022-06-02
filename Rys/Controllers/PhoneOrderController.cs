@@ -11,7 +11,7 @@ namespace Rys.Controllers
         PhoneOrderManager orderManager = new PhoneOrderManager(new EfOrderRepository<PhoneOrder>());
         public IActionResult Index()
         {
-            var values = orderManager.GetAll();//Günlük sipariş yap
+            var values = orderManager.GetAll("Customer");//Günlük sipariş yap
             return View(values);
         }
         public IActionResult Complete(int id)
