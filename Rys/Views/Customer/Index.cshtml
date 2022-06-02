@@ -1,0 +1,52 @@
+﻿@using EntityLayer.Concrete
+@model List<Customer>
+@{
+    ViewData["Title"] = "Customer";
+}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <h5 class="card-header">Kategoriler</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Telefon Numarası</th>
+                        <th>Sokak</th>
+                        <th>Mahalle</th>
+                        <th>Sipariş Sayısı</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>@item.PhoneNumber</strong>
+                            </td>
+                            <td>@item.Street.Name</td>
+                            <td>item.Street.District.Name</td>
+                            <td><span class="badge bg-label-success me-1">Aktif</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/Category/Details/@item.Id"><i class="bx bx-edit-alt me-2"></i> Düzenle</a>
+                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+    <a href="/Category/Add" class="btn btn-primary mt-3 w-100">
+        <span class="tf-icons bx bx-plus-circle"></span>&nbsp; Kategori Ekle
+    </a>
+</div>
