@@ -9,6 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface ICustomerService : IGenericService<Customer>
     {
-
+        List<Customer> GetAll(string a, string b);
     }
 }

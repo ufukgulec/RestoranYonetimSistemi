@@ -54,6 +54,11 @@ namespace BusinessLayer.Concrete
             return _customerDal.GetAll(Expression);
         }
 
+        public List<Customer> GetAll(string a, string b)
+        {
+            return _customerDal.GetAll(a, b);
+        }
+
         public void Update(Customer entity)
         {
             _customerDal.Update(entity);

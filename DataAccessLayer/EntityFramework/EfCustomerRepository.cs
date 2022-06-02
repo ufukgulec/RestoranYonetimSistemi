@@ -13,6 +13,12 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfCustomerRepository : GenericRepository<Customer>, ICustomerDal
     {
-
+        public List<Customer> GetAll(string a, string b)
+        {
+            using (var c = new Context())
+            {
+                return c.Customers.Include(a).Include(b).ToList();
+            }
+        }
     }
 }
