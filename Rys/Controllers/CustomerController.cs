@@ -9,7 +9,7 @@ namespace Rys.Controllers
         CustomerManager customerManager = new CustomerManager(new EfCustomerRepository());
         public IActionResult Index()
         {
-            var values = customerManager.GetAll("Street");
+            var values = customerManager.GetAll("Street", "Street.District");
             return View(values);
         }
     }
