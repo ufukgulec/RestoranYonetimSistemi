@@ -28,5 +28,10 @@ namespace Rys.Controllers
             customerManager.Add(customer);
             return RedirectToAction("Index");
         }
+        public IActionResult Delete(int id)
+        {
+            customerManager.Delete(customerManager.Get(id));
+            return RedirectToAction("Index");
+        }
     }
 }
