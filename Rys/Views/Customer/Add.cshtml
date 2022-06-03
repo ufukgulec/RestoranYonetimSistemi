@@ -1,0 +1,59 @@
+﻿@using EntityLayer.Concrete;
+@model Customer
+@{
+    ViewData["Title"] = "Add";
+}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <!-- Layout Demo -->
+    <div class="col-xxl">
+        <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">Müşteri Ekle</h5>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Add", "Customer", FormMethod.Post))
+                {
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Telefon Numarası</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                    <i class="bx bx-food-menu"></i>
+                                </span>
+
+                                @Html.TextBoxFor(x=>x.PhoneNumber,new{placeholder="5075452953",@class="form-control"})
+
+                            </div>
+                            @Html.ValidationMessageFor(x=>x.PhoneNumber,null,new{@class="text-danger"})
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Sokak</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                    <i class="bx bx-category"></i>
+                                </span>
+                                <select class="form-select form-control" id="exampleFormControlSelect1" aria-label="Default select example" name="StreetId">
+                                    <option selected="">Bir Sokak Seçiniz...</option>
+                                    @foreach (var item in @ViewData["Streets"] as List<Street>)
+                                    {
+                                        <option value="@item.Id">@item.Name Sk.</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Tamamla</button>
+                            <a href="/Customer/Index" class="btn btn-warning">Geri</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger" role="alert">Eklemeye çalıştığınız kategori mevcut</div>
+    <!--/ Layout Demo -->
+</div>
