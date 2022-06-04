@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Rys.Models;
 
@@ -9,6 +11,7 @@ namespace Rys.Controllers
     public class CustomerController : Controller
     {
         CustomerManager customerManager = new CustomerManager(new EfCustomerRepository());
+        VMRegion regionModel = new VMRegion();
         public IActionResult Index()
         {
             var values = customerManager.GetAll("Street", "Street.District");
@@ -17,7 +20,7 @@ namespace Rys.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            VMRegion regionModel = new VMRegion();
+
             ViewData["Streets"] = regionModel.streets;
 
             return View();
@@ -25,8 +28,23 @@ namespace Rys.Controllers
         [HttpPost]
         public IActionResult Add(Customer customer)
         {
-            customerManager.Add(customer);
-            return RedirectToAction("Index");
+            CustomerValidator validationRules = new CustomerValidator();
+            ValidationResult validationResult = validationRules.Validate(customer);
+            if (validationResult.IsValid)
+            {
+                customerManager.Add(customer);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                ViewData["Streets"] = regionModel.streets;
+                return View();
+            }
+
         }
         public IActionResult Delete(int id)
         {
