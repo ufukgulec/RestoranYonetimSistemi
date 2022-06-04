@@ -23,7 +23,10 @@
                                 <div class="row">
                                     <label for="html5-tel-input" class="col-md-2 col-form-label">Telefon Numarası</label>
                                     <div class="col-md-10">
-                                        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+                                            <input type="text" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="5075452953" aria-label="Search..." aria-describedby="basic-addon-search31">
+                                        </div>
                                         <datalist id="datalistOptions">
                                             @foreach (var item in ViewData["Phones"] as List<Customer>)
                                             {
@@ -47,12 +50,16 @@
                                 <div class="row">
                                     <label for="exampleDataList" class="col-md-2 form-label col-form-label">Sokak</label>
                                     <div class="col-md-10">
-                                        <select id="defaultSelect" class="form-select">
-                                            <option>Default select</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
+
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-map"></i></span>
+                                            <select id="defaultSelect" aria-describedby="basic-addon-search31" class="form-select form-control">
+                                                <option>Sokak Seçiniz...</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
