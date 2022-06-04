@@ -1,0 +1,84 @@
+﻿@using EntityLayer.Concrete;
+@model VMRegion
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <!-- Layout Demo -->
+    <div class="col-xxl">
+        <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">Mahalle & Sokak Kontrol</h5>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "Region", FormMethod.Post))
+                {
+                    <div class="row mb-3">
+                        <label for="exampleDataList" class="col-sm-2 form-label">Mahalleler</label>
+                        <div class="col-sm-10">
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                    <i class='bx bx-current-location'></i>
+                                </span>
+                                <input class="form-control" list="datalistOptions" id="searchDistrict" name="searchDistrict" placeholder="Mahalle ara...">
+
+                            </div>
+                            <datalist id="datalistOptions">
+                                @foreach (var item in Model.districts)
+                                {
+                                    <option value="@item.Name"></option>
+                                }
+
+                            </datalist>
+                        </div>
+                    </div>
+                    @if (Model.streets != null)
+                    {
+                        <div class="row mb-3">
+
+                            <label for="examplestreet" class="col-sm-2 form-label">Sokaklar</label>
+
+                            <div class="col-sm-10 float-end">
+                                <ol class="list-group list-group-numbered">
+
+                                    @foreach (var item in Model.streets)
+                                    {
+                                        <li class="list-group-item">@item.Name</li>
+                                    }
+
+                                </ol>
+                            </div>
+                        </div>
+                    }
+                    <div class="row justify-content-end">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Ara</button>
+                            <a href="/Product/Index" class="btn btn-warning">Geri</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <h5 class="card-header">İlçe değiştir</h5>
+            <form>
+                <div class="card-body">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Etimesgut" aria-describedby="floatingInputHelp">
+                        <label for="floatingInput">İlçe adı</label>
+                        <div id="floatingInputHelp" class="form-text">
+                            Otomatik olarak mahalle ve sokaklar çekilecektir...
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-success">Ara</button>
+                        <a href="/Product/Index" class="btn btn-danger">Temizle</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/ Layout Demo -->
+</div>
