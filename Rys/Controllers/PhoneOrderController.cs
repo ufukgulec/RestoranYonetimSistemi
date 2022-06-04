@@ -3,6 +3,7 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Rys.Models;
+using System.Linq;
 
 namespace Rys.Controllers
 {
@@ -11,7 +12,12 @@ namespace Rys.Controllers
         PhoneOrderManager orderManager = new PhoneOrderManager(new EfOrderRepository<PhoneOrder>());
         public IActionResult Index()
         {
-            var values = orderManager.GetAll("Customer");//Günlük sipariş yap
+            var values = orderManager.GetAll("Customer").Where(x => x.OrderTime.Date == System.DateTime.Now.Date).ToList();//Günlük sipariş yap
+            return View(values);
+        }
+        public IActionResult History()
+        {
+            var values = orderManager.GetAll("Customer");
             return View(values);
         }
         public IActionResult Complete(int id)
