@@ -10,7 +10,9 @@
         <div class="col-md">
             <small class="text-light fw-semibold">Telefon siparişi</small>
             <div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
-                <form class="">
+                <form class="" method="post">
+                    <input type="text" class="form-control" name="ProductId" value="1">
+                    <input type="text" class="form-control" name="ProductCount" value="1">
                     <div class="accordion-item card active mb-3">
                         <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconOne">
                             <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-1" aria-controls="accordionIcon-1" aria-expanded="false">
@@ -25,7 +27,7 @@
                                     <div class="col-md-10">
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                                            <input type="text" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="5075452953" aria-label="Search..." aria-describedby="basic-addon-search31">
+                                            <input type="text" class="form-control" name="PhoneNumber" list="datalistOptions" id="exampleDataList" placeholder="5075452953" aria-label="Search..." aria-describedby="basic-addon-search31">
                                         </div>
                                         <datalist id="datalistOptions">
                                             @foreach (var item in ViewData["Phones"] as List<Customer>)
@@ -38,34 +40,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="accordion-item card mb-3">
-                        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconTwo">
-                            <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionIcon-2" aria-controls="accordionIcon-2" aria-expanded="true">
-                                2. Adres seçiniz
-                            </button>
-                        </h2>
-                        <div id="accordionIcon-2" class="accordion-collapse collapse" data-bs-parent="#accordionIcon" style="">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <label for="exampleDataList" class="col-md-2 form-label col-form-label">Sokak</label>
-                                    <div class="col-md-10">
-
-                                        <div class="input-group input-group-merge">
-                                            <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-map"></i></span>
-                                            <select id="defaultSelect" aria-describedby="basic-addon-search31" class="form-select form-control">
-                                                <option>Sokak Seçiniz...</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="accordion-item card mb-3">
                         <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconThree">
                             <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-3" aria-expanded="false" aria-controls="accordionIcon-3">
@@ -86,7 +60,7 @@
                         </h2>
                         <div id="accordionIcon-4" class="accordion-collapse collapse" data-bs-parent="#accordionIcon" style="">
                             <div class="accordion-body">
-                                <button type="button" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary">
                                     <span class="tf-icons bx bx-checkbox-checked"></span>&nbsp; Onayla
                                 </button>
                                 <button type="button" class="btn btn-danger">
