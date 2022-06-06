@@ -2,75 +2,78 @@
     ViewData["Title"] = "Add";
 }
 @using EntityLayer.Concrete;
-@model List<PhoneOrder>
+@model List<Category>
 
 <div class="container-xxl flex-grow-1 container-p-y">
     <!-- Accordion -->
     <div class="row">
-        <div class="col-md">
-            <small class="text-light fw-semibold">Telefon siparişi</small>
-            <div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
-                <form class="" method="post">
-                    <input type="text" class="form-control" name="ProductId" value="1">
-                    <input type="text" class="form-control" name="ProductCount" value="1">
-                    <div class="accordion-item card active mb-3">
-                        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconOne">
-                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-1" aria-controls="accordionIcon-1" aria-expanded="false">
-                                1. Telefon numarası giriniz
-                            </button>
-                        </h2>
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <h5 class="card-header">Kategori Seçimi</h5>
+                <div class="card-body bb">
 
-                        <div id="accordionIcon-1" class="accordion-collapse collapse show" data-bs-parent="#accordionIcon" style="">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <label for="html5-tel-input" class="col-md-2 col-form-label">Telefon Numarası</label>
-                                    <div class="col-md-10">
-                                        <div class="input-group input-group-merge">
-                                            <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                                            <input type="text" class="form-control" name="PhoneNumber" list="datalistOptions" id="exampleDataList" placeholder="5075452953" aria-label="Search..." aria-describedby="basic-addon-search31">
-                                        </div>
-                                        <datalist id="datalistOptions">
-                                            @foreach (var item in ViewData["Phones"] as List<Customer>)
-                                            {
-                                                <option value="@item.PhoneNumber"></option>
-                                            }
-                                        </datalist>
+                    @foreach (var item in Model.OrderByDescending(x => x.Products.Count))
+                    {
+                        <div class="card card-1 text-center mb-3 me-1 w-50">
+                            <div class="card-body">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="nav-align-top mt-4">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
+                            Ürün Seçimi
+                        </button>
+                    </li>
+                    @foreach (var item in Model)
+                    {
+                        <li class="nav-item">
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-@item.Name" aria-controls="navs-top-home" aria-selected="false">
+                                @item.Name
+                            </button>
+                        </li>
+                    }
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel">
+                        <p>
+                            Ürün seçimi bilgi
+                        </p>
+                        <p class="mb-0">
+                            Ürün seçimi nasıl çalışır
+                        </p>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="tab-pane fade" id="navs-top-@item.Name" role="tabpanel">
+                            @foreach (var p in item.Products)
+                            {
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@p.Name</h5>
+                                        <div class="card-subtitle text-muted mb-3">Card subtitle</div>
+                                        <p class="card-text">
+                                            @p.Description
+                                        </p>
+                                        <a href="javascript:void(0)" class="card-link">Card link</a>
+                                        <a href="javascript:void(0)" class="card-link">Another link</a>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         </div>
-                    </div>
-                    <div class="accordion-item card mb-3">
-                        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconThree">
-                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-3" aria-expanded="false" aria-controls="accordionIcon-3">
-                                3. Ürün seçiniz
-                            </button>
-                        </h2>
-                        <div id="accordionIcon-3" class="accordion-collapse collapse" data-bs-parent="#accordionIcon" style="">
-                            <div class="accordion-body">
-                                Ürünler
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item card mb-3">
-                        <h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconThree">
-                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionIcon-4" aria-expanded="false" aria-controls="accordionIcon-3">
-                                4. Siparişi onaylayınız
-                            </button>
-                        </h2>
-                        <div id="accordionIcon-4" class="accordion-collapse collapse" data-bs-parent="#accordionIcon" style="">
-                            <div class="accordion-body">
-                                <button type="submit" class="btn btn-primary">
-                                    <span class="tf-icons bx bx-checkbox-checked"></span>&nbsp; Onayla
-                                </button>
-                                <button type="button" class="btn btn-danger">
-                                    <span class="tf-icons bx bx-x-circle"></span>&nbsp; Temizle
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                    }
+                </div>
             </div>
+        </div>
+        <div class="col-md-4">
+            Sepet
         </div>
     </div>
     <!--/ Accordion -->

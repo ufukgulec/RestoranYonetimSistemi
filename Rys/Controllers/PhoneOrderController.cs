@@ -37,11 +37,9 @@ namespace Rys.Controllers
         [HttpGet]
         public IActionResult Add(int CustomerId) // Sipariş tablosu için telefon, Sokak id alınması lazım sipariş detay için ürün id ve adeti alınması lazım
         {
-            //PhoneOrder tablosuna ekleme yapılacak sonra PhoneOrderDetails tablosuna PhoneOrder id ile ürün eklemesi yapılacak.
-            ViewData["Phones"] = VMPhones.GetAll();
-            ViewData["Streets"] = new VMRegion().streets;
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
 
-            return View(orderManager.GetAll());
+            return View(categoryManager.GetAll("Products").Where(x => x.Status).Where(x => x.Products.Count != 0).ToList());
         }
         [HttpPost]
         public IActionResult Add()
