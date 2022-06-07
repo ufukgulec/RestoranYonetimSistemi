@@ -1,31 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Add";
 }
+
 @using EntityLayer.Concrete;
 @model List<Category>
 
 <div class="container-xxl flex-grow-1 container-p-y">
     <!-- Accordion -->
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-md-8">
-            <div class="card mb-4">
-                <h5 class="card-header">Kategori Seçimi</h5>
-                <div class="card-body bb">
-
-                    @foreach (var item in Model.OrderByDescending(x => x.Products.Count))
-                    {
-                        <div class="card card-1 text-center mb-3 me-1 w-50">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    }
-
-                </div>
-            </div>
-            <div class="nav-align-top mt-4">
+            <div class="nav-align-top">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
@@ -53,27 +37,63 @@
                     @foreach (var item in Model)
                     {
                         <div class="tab-pane fade" id="navs-top-@item.Name" role="tabpanel">
-                            @foreach (var p in item.Products)
-                            {
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">@p.Name</h5>
-                                        <div class="card-subtitle text-muted mb-3">Card subtitle</div>
-                                        <p class="card-text">
-                                            @p.Description
-                                        </p>
-                                        <a href="javascript:void(0)" class="card-link">Card link</a>
-                                        <a href="javascript:void(0)" class="card-link">Another link</a>
+
+                            <div class="container-product">
+                                @foreach (var p in item.Products)
+                                {
+                                    <div class="input-row-product">
+                                        <div class="title-product">
+                                            <h2 class="label-product">@p.Name</h2>
+                                            <p class="description-product fw-bold">@p.Price ₺</p>
+                                        </div>
+                                        <div class="input-product">
+                                            <button class="minus btn-counter" aria-label="Decrease by one" disabled>
+                                                <svg width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <line y1="1" x2="16" y2="1" stroke="#0064FE" stroke-width="2" class="icon-product" />
+                                                </svg>
+
+                                            </button>
+                                            <div class="number-product dim">0</div>
+                                            <button class="plus btn-counter" aria-label="Increase by one">
+                                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="plus">
+                                                    <line x1="8" y1="4.37114e-08" x2="8" y2="16" stroke="#0064FE" stroke-width="2" />
+                                                    <line y1="8" x2="16" y2="8" stroke="#0064FE" stroke-width="2" />
+                                                </svg>
+
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            }
+
+                                }
+                            </div>
                         </div>
                     }
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            Sepet
+            <div class="card">
+                <div class="card-header">
+                    Sepet
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Soufflé pastry pie ice
+                            <span class="badge bg-primary">5</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Soufflé pastry pie ice
+                            <span class="badge bg-primary">5</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Soufflé pastry pie ice
+                            <span class="badge bg-primary">5</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </div>
     <!--/ Accordion -->
