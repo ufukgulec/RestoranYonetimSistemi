@@ -40,7 +40,7 @@ namespace Rys.Controllers
         [HttpGet]
         public IActionResult Add(int id) // Sipariş tablosu için telefon, Sokak id alınması lazım sipariş detay için ürün id ve adeti alınması lazım
         {
-            var currrentCustomer = customerManager.Get(id);
+            var currrentCustomer = VMCustomer.Get(id);
             ViewData["Customer"] = currrentCustomer;
 
             return View(categoryManager.GetAll("Products").Where(x => x.Status).Where(x => x.Products.Count != 0).ToList());

@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Add";
+    Customer currentCustomer = ViewData["Customer"] as Customer;
 }
 
 @using EntityLayer.Concrete;
@@ -13,7 +14,7 @@
                 <ul class="nav nav-tabs nav-fill" role="tablist">
                     <li class="nav-item">
                         <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="false">
-                            Ürün Seçimi
+                            Müşteri Detay
                         </button>
                     </li>
                     @foreach (var item in Model)
@@ -27,15 +28,24 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel">
-                        <p>
-                            @{
-                                Customer c = ViewData["Customer"] as Customer;
-                            }
-                            @c.PhoneNumber
-                        </p>
-                        <p class="mb-0">
-                            Ürün seçimi nasıl çalışır
-                        </p>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-fullname">Müşteri telefon numarası</label>
+                                <input type="text" class="form-control" id="basic-icon-default-fullname" disabled value="@currentCustomer.PhoneNumber" aria-describedby="basic-icon-default-fullname2">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-fullname">Müşteri sokak adı</label>
+
+                                <input type="text" class="form-control" id="basic-icon-default-fullname" disabled value="@currentCustomer.Street.Name Sokağı" aria-describedby="basic-icon-default-fullname2">
+
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="basic-icon-default-fullname">Müşteri mahalle adı</label>
+
+                                <input type="text" class="form-control" id="basic-icon-default-fullname" disabled value="@currentCustomer.Street.District.Name Mahallesi" aria-describedby="basic-icon-default-fullname2">
+
+                            </div>
+                        </form>
                     </div>
                     @foreach (var item in Model)
                     {
