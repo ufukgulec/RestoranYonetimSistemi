@@ -6,10 +6,10 @@ Web uygulaması olarak geliştirilen bu projede kategori ve ürün kontrolleri y
 
 ![Uygulama Ekran Görüntüsü](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-  
 ## Proje Tanıtımı
 
 Bu proje N katmanlı mimari yapısına uygun olarak .net5 ile oluşturulmuştur. Katmanlar sorumlulukların ayrılması ve bağımlılıkların yönetilmesi için kullanılan bir yöntemdir. Her katmanın belirli bir sorumluluğu vardır. Daha yüksek bir katman, hizmetleri daha düşük bir katmanda kullanabilir ancak daha düşük bir katman, hizmetleri daha yüksek bir katmanda kullanamaz. Katmanlara ayrılmış projede varlık, veri tabanı erişimi, iş katmanı ve sunum katmanı olmak üzere 4 katman bulunuyor. Veri tabanı Code First yaklaşımı ile oluşturulmuştur.
+
 ## Özellikler
 
 - Açık/koyu mod geçişi
@@ -50,10 +50,6 @@ Bire çok (1-n) ilişkili tablolarda kullanılan yapı böyledir.
 ## Veri Erişim Katmanı - DataAccessLayer
 Bu katman veri tabanı ile iletişim kurulan katmandır. 
 
-
-
-
-.
 ## migrations
 
 Testleri çalıştırmak için aşağıdaki komutu çalıştırın
