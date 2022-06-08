@@ -28,7 +28,10 @@
                 <div class="tab-content">
                     <div class="tab-pane fade active show" id="navs-top-home" role="tabpanel">
                         <p>
-                            Ürün seçimi bilgi
+                            @{
+                                Customer c = ViewData["Customer"] as Customer;
+                            }
+                            @c.PhoneNumber
                         </p>
                         <p class="mb-0">
                             Ürün seçimi nasıl çalışır
