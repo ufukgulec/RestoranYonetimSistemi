@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\productBucket.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\js\dashboard.js" />
+    <None Include="wwwroot\js\productBucket.js" />
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 
