@@ -7,6 +7,7 @@ const maxValue = 10;
 
 //Sepetin html etiketi
 const bucket = document.querySelector("body > div.layout-wrapper.layout-content-navbar > div.layout-container > div > div > div.container-xxl.flex-grow-1.container-p-y > div > div.col-md-4 > div > div.card-body > ul");
+
 //Sepetteki ürünleri tutacak dizi
 const products = new Array();
 
@@ -31,15 +32,21 @@ buttons.forEach((button) => {
         const areaparent = parent.parentNode;
         const productInfoArea = areaparent.querySelector(".title-product");
         const productName = productInfoArea.querySelector(".label-product").textContent;
+        const productId = productInfoArea.querySelector(".product-id").value;
 
         // 6. Tıklanılan butonun artı veya eksi olma durumu
         var newNumber = number;
         if (element.classList.contains("plus")) {
             newNumber = number + 1;
-            bucketAdd(productName);
+            bucketAdd(productName, productId);
         } else {
             newNumber = number - 1;
-            bucketRemove(productName);
+            bucketRemove(productName, productId);
+        }
+        if (bucket.children.length > 0) {
+            document.getElementById("btn-bucket").style.display = "block";
+        } else {
+            document.getElementById("btn-bucket").style.display = "none";
         }
         console.table(products);
 
@@ -63,28 +70,28 @@ buttons.forEach((button) => {
     });
 });
 
-function bucketAdd(productName) {
+function bucketAdd(productName, productId) {
     products.push(productName);
     var count = products.filter(p => p === productName).length;
-    bucketListAdd(productName, count);
+    bucketListAdd(productName, count, productId);
 }
 
-function bucketRemove(productName) {
+function bucketRemove(productName, productId) {
 
     for (var i = 0; i < products.length; i++) {
         if (products[i] === productName) {
             products.splice(products.indexOf(productName), 1);
-            bucketListRemove(productName, count);
+            bucketListRemove(productName, productId);
             break;
         }
     }
 
 }
 
-function bucketListAdd(name, count) {
+function bucketListAdd(name, count, productId) {
     const satır = document.createElement("li");
     const badge = document.createElement("span");
-
+    satır.id = "item-" + productId;
     satır.className = "list-group-item d-flex justify-content-between align-items-center";
     badge.className = "badge bg-primary";
 
@@ -110,57 +117,16 @@ function bucketListAdd(name, count) {
         bucket.append(satır);
     }
 }
-function bucketListRemove(name, count) {
-    if (products.length > 0) {
-        eklensin = false;
+function bucketListRemove(name, productId) {
 
-        products.forEach((product) => {
-            if (product.name == ürünIsmı) {
-                product.adet = -1;
-                eklensin = true;
-            }
-        });
-        if (eklensin) {
-            products.push({ name: ürünIsmı, adet: adet });
+    const item = document.getElementById("item-" + productId);
 
-            const satır = document.createElement("li");
-            const badge = document.createElement("span");
+    const productCount = item.children[0].textContent;
 
-            satır.className = "list-group-item d-flex justify-content-between align-items-center";
-            satır.id = "item-" + ürünIsmı.split(" ");
-            const ProductName = document.createTextNode(ürünIsmı);
-
-            satır.appendChild(ProductName);
-            badge.className = "badge bg-primary";
-
-            const ProductCount = document.createTextNode(adet);
-
-            badge.appendChild(ProductCount);
-
-            satır.append(badge);
-
-            sepetList.append(satır);
-        } else {
-            document.getElementById("item-" + ürünIsmı.split(" ")).children[0].innerHTML = adet;
-        }
+    if (productCount > 1) {
+        item.children[0].textContent = productCount - 1;
     } else {
-        products.push({ name: ürünIsmı, adet: adet });
-        const satır = document.createElement("li");
-        const badge = document.createElement("span");
-
-        satır.className = "list-group-item d-flex justify-content-between align-items-center";
-        satır.id = "item-" + ürünIsmı.split(" ");
-        const ProductName = document.createTextNode(ürünIsmı);
-
-        satır.appendChild(ProductName);
-        badge.className = "badge bg-primary";
-
-        const ProductCount = document.createTextNode(adet);
-
-        badge.appendChild(ProductCount);
-
-        satır.append(badge);
-
-        sepetList.append(satır);
+        item.remove();
     }
+
 }
