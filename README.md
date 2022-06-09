@@ -95,6 +95,21 @@ Projenin DataAccessLayer ile Sunum katmanını birleştiren katmandır. Validasy
 
 Abstract klasörünün içine interface sınıflarımı oluşturdum (IGenericService.cs mesela) Concrete klasörü altında oluşturulan GenericManager.cs sınıfı IGenericService.cs'den kalıtım alır ve veri tabanı işlemleri (CRUD işlemleri) yapan bir sınıftır. EntityFramework klasörünün içinde oluşturulan varlık repositoryleri (EfCategoryRepository mesela) GenericRepository.cs'den kalıtım alır.
 
+### Fluent Validation
+
+Fluent Validation nuget'i kullanma amacım kuralları tanımlanmış varlıkların oluşturulurken boş ve geçersiz kullanımlarda hata dönmesini sağladım. 
+
+```javascript
+    public class CategoryValidator : AbstractValidator<Category> 
+    { 
+     public CategoryValidator()
+      { 
+       RuleFor(x => x.Name).NotEmpty().WithMessage("Kategori adı boş geçilemez"); 
+       RuleFor(x => x.Description).MaximumLength(100).WithMessage("100 Karakterden fazla giriş yapmayınız.");
+      }
+    }
+```
+
 ## API Kullanımı
 
 #### Tüm öğeleri getir
