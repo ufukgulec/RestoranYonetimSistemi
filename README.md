@@ -1,6 +1,6 @@
 Getting started with Markdown
 =============================
-- [Uygulama Hakkında](#özellikler)
+- [Uygulama Hakkında](#RestoranYönetimSistemi)
 - [List](#list)
 	- [List CheckBox](#list-checkbox)
 - [Link](#link)
