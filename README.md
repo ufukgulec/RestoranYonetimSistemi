@@ -66,7 +66,7 @@ Code First yaklaşımı ile hazırladığım için Rys adında veri tabanı olu�
     public DbSet<Category> Categories { get; set; }
 ```
 
-## Migrations
+### Migrations
 
 Hazırlanan Context.cs sınıfını veri tabanına yansıtmak için DataAccessLayer'da 
 
@@ -75,13 +75,25 @@ Hazırlanan Context.cs sınıfını veri tabanına yansıtmak için DataAccessLa
 ```bash
   Add-Migration MigrationName
 ```
+DataAccessLayer içinde Migrations klasörünün altında MigrationName adında bir sınıf oluşur. Yapılan değişiklikleri görebilirsiniz.
 
 Sonraki adım:
 
 ```bash
   Update-Database
 ```
-Hazırlanan sınıflar veri tabanına yansıması lazım...
+Yapılan değişiklik veri tabanına yansır.
+
+### DataAccesLayer Yapısı
+
+Abstract klasörünün içine interface sınıflarımı oluşturdum (IGenericDal.cs mesela) repositories klasörü altında oluşturulan GenericRepository.cs sınıfı IGenericDal.cs'den kalıtım alır ve veri tabanı işlemleri (CRUD işlemleri) yapan bir sınıftır. EntityFramework klasörünün içinde oluşturulan varlık repositoryleri (EfCategoryRepository mesela) GenericRepository.cs'den kalıtım alır.
+
+## İş Katmanı - BusinessLayer
+Projenin DataAccessLayer ile Sunum katmanını birleştiren katmandır. Validasyon kontrolleri yapar.  
+
+### BusinessLayer Yapısı
+
+Abstract klasörünün içine interface sınıflarımı oluşturdum (IGenericService.cs mesela) Concrete klasörü altında oluşturulan GenericManager.cs sınıfı IGenericService.cs'den kalıtım alır ve veri tabanı işlemleri (CRUD işlemleri) yapan bir sınıftır. EntityFramework klasörünün içinde oluşturulan varlık repositoryleri (EfCategoryRepository mesela) GenericRepository.cs'den kalıtım alır.
 
 ## API Kullanımı
 
