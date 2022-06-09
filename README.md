@@ -1,4 +1,29 @@
-[Go to Real Cool Heading section](## Özellikler)
+Getting started with Markdown
+=============================
+- [Titles](# Restoran Yönetim Sistemi)
+- [Paragraph](#paragraph)
+- [List](#list)
+	- [List CheckBox](#list-checkbox)
+- [Link](#link)
+	- [Anchor links](#anchor-links)
+- [Blockquote](#blockquote)
+- [Image | GIF](#image--gif)
+- [Style Text](#style-text)
+	- [Italic](#italic)
+	- [Bold](#bold)
+	- [Strikethrough](#strikethrough)
+- [Code](#code)
+- [Email](#email)
+- [Table](#table)
+	- [Table Align](#table-align)
+    	- [Align Center](#align-center)
+    	- [Align Left](#align-left)
+    	- [Align Right](#align-right)
+- [Escape Characters](#escape-characters)
+- [Emoji](#emoji)
+- [Shields Badges](#Shields-Badges)
+- [Markdown Editor](#markdown-editor)
+- [Some links for more in depth learning](#some-links-for-more-in-depth-learning)
 # Restoran Yönetim Sistemi
 
 Web uygulaması olarak geliştirilen bu projede restoranın yönetiminde kullanılan ekle, sil ve güncelle gibi sipariş takip sağlanabilir. Kategori ve ürün kontrolleri yapılabilir. Kategori ekleme, silme ve güncelleme yapılabilmektedir. Seçilen kategoriye ürün eklenilebilir. Telefon siparişi, Masa siparişi ve Online entegrasyon sipariş takipleri yapılabilir. Uygulamayı kullanacak kullanıcı ve garsonlara yetki verilebilir. 
