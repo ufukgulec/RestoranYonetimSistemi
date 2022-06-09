@@ -222,4 +222,4 @@ Destek için fake@fake.com adresine e-posta gönderin veya Slack kanalımıza ka
 
 Kodunuzda hangi optimizasyonları yaptınız? Örneğin. yeniden düzenleyiciler, performans iyileştirmeleri, erişilebilirlik
 
-  
+  ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=radical)
