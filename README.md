@@ -1,6 +1,6 @@
-Getting started with Markdown
+Başlarken 
 =============================
-- [Uygulama Hakkında](#RestoranYönetimSistemi)
+- [Uygulama Hakkında](#restoran-yönetim-sistemi)
 - [List](#list)
 	- [List CheckBox](#list-checkbox)
 - [Link](#link)
@@ -23,7 +23,7 @@ Getting started with Markdown
 - [Shields Badges](#Shields-Badges)
 - [Markdown Editor](#markdown-editor)
 - [Some links for more in depth learning](#some-links-for-more-in-depth-learning)
-# Restoran Yönetim Sistemi
+# Restoran Yönetim Sistemi Uygulaması
 
 Web uygulaması olarak geliştirilen bu projede restoranın yönetiminde kullanılan ekle, sil ve güncelle gibi sipariş takip sağlanabilir. Kategori ve ürün kontrolleri yapılabilir. Kategori ekleme, silme ve güncelleme yapılabilmektedir. Seçilen kategoriye ürün eklenilebilir. Telefon siparişi, Masa siparişi ve Online entegrasyon sipariş takipleri yapılabilir. Uygulamayı kullanacak kullanıcı ve garsonlara yetki verilebilir. 
 
