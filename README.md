@@ -161,6 +161,19 @@ Temanın Navbarını ayrı dosyada tutmak istiyorsanız Layouta bildirmemiz gere
 <partial name="_Navbar" />
 ```
 
+View dosyalarında denetleyiciden gelen değerleri okumak için gelen değere göre kod parçacıkları eklemeliyiz.
+
+Denetleyiciden tek bir değer geliyorsa:
+```javascript
+@using EntityLayer.Concrete;
+@model Product
+```
+Denetleyiciden gelen değer dizi ise:
+```javascript
+@using EntityLayer.Concrete;
+@model List<Product>
+```
+
 ## API Kullanımı
 
 #### Tüm öğeleri getir
