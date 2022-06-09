@@ -1,7 +1,6 @@
 Getting started with Markdown
 =============================
-- [Titles](#Restoran Yönetim Sistemi)
-- [Paragraph](#paragraph)
+- [Paragraph](#özellikler)
 - [List](#list)
 	- [List CheckBox](#list-checkbox)
 - [Link](#link)
