@@ -1,7 +1,14 @@
 
 # Restoran Yönetim Sistemi
 
-Web uygulaması olarak geliştirilen bu projede kategori ve ürün kontrolleri yapılabilir. Kategori ekleme, silme ve güncelleme yapılabilmektedir. Seçilen kategoriye ürün eklenilebilir. Telefon siparişi, Masa siparişi ve Online entegrasyon sipariş takipleri yapılabilir. Uygulamayı kullanacak kullanıcı ve garsonlara yetki verilebilir. 
+Web uygulaması olarak geliştirilen bu projede restoranın yönetiminde kullanılan ekle, sil ve güncelle gibi sipariş takip sağlanabilir. Kategori ve ürün kontrolleri yapılabilir. Kategori ekleme, silme ve güncelleme yapılabilmektedir. Seçilen kategoriye ürün eklenilebilir. Telefon siparişi, Masa siparişi ve Online entegrasyon sipariş takipleri yapılabilir. Uygulamayı kullanacak kullanıcı ve garsonlara yetki verilebilir. 
+
+## Özellikler
+
+- Ekle Sil Güncelle (Kategori,Ürün,Müşteri,Sokak,Mahalle...)
+- Telefon Siparişi Takip
+- Masa Siparişi Takip
+
 ## Uygulama Görüntüleri
 
 ![Uygulama Ekran Görüntüsü](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
@@ -12,25 +19,19 @@ Bu proje N katmanlı mimari yapısına uygun olarak .net5 ile oluşturulmuştur.
 
 ## Özellikler
 
-- Açık/koyu mod geçişi
-- Canlı ön izleme
-- Tam ekran modu
-- Tüm platformlara destek
-
+- Multitier Architecture
+- .Net Core 5
+- Code First
+- Responsive Layout
   
 ## Kullanılanlar
 
-**Backend:** .Net 5, .Net Core 5, EntityFrameworkCore, FluentValidation
-
-**Frontend:** Bootstrap, Jquery 
-
+.Net 5, .Net Core 5, EntityFrameworkCore, FluentValidation, Bootstrap, Jquery 
   
 ## Varlık Katmanı - EntityLayer
 
 Bu katmanda veri tabanında bulunan her tablonun sınıfları ve nitelikleri oluşturulmuştur.
 Üst katmanlar(DataAccessLayer, BussinesLayer ve Sunum katmanı) kullanabilir. 
-
-
 
 ### İki tablo arasındaki ilişkiyi oluşturma örneği
 
@@ -47,18 +48,41 @@ Bu katmanda veri tabanında bulunan her tablonun sınıfları ve nitelikleri olu
     }
 ```
 Bire çok (1-n) ilişkili tablolarda kullanılan yapı böyledir.
+
 ## Veri Erişim Katmanı - DataAccessLayer
-Bu katman veri tabanı ile iletişim kurulan katmandır. 
+Projenin veri tabanı ile bağlantı kuran katmanıdır. Concrete klasörü altında Context.cs sınıf bulunur ve veri tabanı bağlantısını tutar. 
 
-## migrations
+### Context.cs
 
-Testleri çalıştırmak için aşağıdaki komutu çalıştırın
+```javascript
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("server=UFUK;database=Rys;integrated security=true");
+    }
+```
+Code First yaklaşımı ile hazırladığım için Rys adında veri tabanı oluşturur. Veri tabanında tablolarıda bu sınıfta DbSet olarak tutarız.
 
-```bash
-  npm run test
+```javascript
+    public DbSet<Category> Categories { get; set; }
 ```
 
-  
+## Migrations
+
+Hazırlanan Context.cs sınıfını veri tabanına yansıtmak için DataAccessLayer'da 
+
+İlk Adım:
+
+```bash
+  Add-Migration MigrationName
+```
+
+Sonraki adım:
+
+```bash
+  Update-Database
+```
+Hazırlanan sınıflar veri tabanına yansıması lazım...
+
 ## API Kullanımı
 
 #### Tüm öğeleri getir
