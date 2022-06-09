@@ -194,53 +194,6 @@ Denetleyiciden gelen değer dizi ise:
 @model List<Product>
 ```
 
-## API Kullanımı
 
-#### Tüm öğeleri getir
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ufukgulec&show_icons=true&theme=radical)
 
-```http
-  GET /api/items
-```
-
-| Parametre | Tip     | Açıklama                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Gerekli**. API anahtarınız. |
-
-#### Öğeyi getir
-
-```http
-  GET /api/items/${id}
-```
-
-| Parametre | Tip     | Açıklama                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Gerekli**. Çağrılacak öğenin anahtar değeri |
-
-#### add(num1, num2)
-
-İki sayı alır ve toplamı döndürür.
-
-  
-## Lisans
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-  
-## İlişkili Projeler
-
-İşte bazı ilgili projeler
-
-[Awesome README](https://github.com/matiassingers/awesome-readme)
-
-  
-## Destek
-
-Destek için fake@fake.com adresine e-posta gönderin veya Slack kanalımıza katılın.
-
-  
-## Optimizasyon
-
-Kodunuzda hangi optimizasyonları yaptınız? Örneğin. yeniden düzenleyiciler, performans iyileştirmeleri, erişilebilirlik
-
-  ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ufukgulec&show_icons=true&theme=radical)
-  [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ufukgulec&layout=compact)]([https://github.com/anuraghazra/github-readme-stats](https://github.com/ufukgulec/RestoranYonetimSistemi))
