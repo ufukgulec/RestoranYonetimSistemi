@@ -223,3 +223,4 @@ Destek için fake@fake.com adresine e-posta gönderin veya Slack kanalımıza ka
 Kodunuzda hangi optimizasyonları yaptınız? Örneğin. yeniden düzenleyiciler, performans iyileştirmeleri, erişilebilirlik
 
   ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ufukgulec&show_icons=true&theme=radical)
+  [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ufukgulec&layout=compact)]([https://github.com/anuraghazra/github-readme-stats](https://github.com/ufukgulec/RestoranYonetimSistemi))
