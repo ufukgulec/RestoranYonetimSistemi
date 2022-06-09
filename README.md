@@ -36,16 +36,16 @@ Bu katmanda veri tabanında bulunan her tablonun sınıfları ve nitelikleri olu
 ### İki tablo arasındaki ilişkiyi oluşturma örneği
 
 ```javascript
-    public class Category
-    {
-        public List<Product> Products { get; set; }
-    }
+public class Category
+{
+  public List<Product> Products { get; set; }
+}
 
-    public class Product
-    {
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
-    }
+public class Product
+{
+  public int CategoryId { get; set; }
+  public Category Category { get; set; }
+}
 ```
 Bire çok (1-n) ilişkili tablolarda kullanılan yapı böyledir.
 
@@ -55,15 +55,15 @@ Projenin veri tabanı ile bağlantı kuran katmanıdır. Concrete klasörü alt�
 ### Context.cs
 
 ```javascript
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer("server=UFUK;database=Rys;integrated security=true");
-    }
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+  optionsBuilder.UseSqlServer("server=UFUK;database=Rys;integrated security=true");
+}
 ```
 Code First yaklaşımı ile hazırladığım için Rys adında veri tabanı oluşturur. Veri tabanında tablolarıda bu sınıfta DbSet olarak tutarız.
 
 ```javascript
-    public DbSet<Category> Categories { get; set; }
+public DbSet<Category> Categories { get; set; }
 ```
 
 ### Migrations
@@ -73,14 +73,14 @@ Hazırlanan Context.cs sınıfını veri tabanına yansıtmak için DataAccessLa
 İlk Adım:
 
 ```bash
-  Add-Migration MigrationName
+Add-Migration MigrationName
 ```
 DataAccessLayer içinde Migrations klasörünün altında MigrationName adında bir sınıf oluşur. Yapılan değişiklikleri görebilirsiniz.
 
 Sonraki adım:
 
 ```bash
-  Update-Database
+Update-Database
 ```
 Yapılan değişiklik veri tabanına yansır.
 
@@ -97,17 +97,68 @@ Abstract klasörünün içine interface sınıflarımı oluşturdum (IGenericSer
 
 ### Fluent Validation
 
-Fluent Validation nuget'i kullanma amacım kuralları tanımlanmış varlıkların oluşturulurken boş ve geçersiz kullanımlarda hata dönmesini sağladım. 
+ValidationRules klasörü altında varlıkların ekleme çıkarma yaparken kontorllerinin sağlandığı sınıflar vardır. Fluent Validation'ı kullanma amacım kuralları tanımlanmış varlıkların oluşturulurken boş ve geçersiz kullanımlarda hata mesajı dönmesini ve hatalı girdileri veri tabanına yansıtmamak için kullandım. 
 
 ```javascript
-    public class CategoryValidator : AbstractValidator<Category> 
-    { 
-     public CategoryValidator()
-      { 
-       RuleFor(x => x.Name).NotEmpty().WithMessage("Kategori adı boş geçilemez"); 
-       RuleFor(x => x.Description).MaximumLength(100).WithMessage("100 Karakterden fazla giriş yapmayınız.");
-      }
-    }
+public class CategoryValidator : AbstractValidator<Category> 
+{ 
+  public CategoryValidator()
+  { 
+    RuleFor(x => x.Name).NotEmpty().WithMessage("Kategori adı boş geçilemez"); 
+    RuleFor(x => x.Description).MaximumLength(100).WithMessage("100 Karakterden fazla giriş yapmayınız.");
+  }
+}
+```
+
+Kategori adı boş değer olursa "Kategori adı boş geçilemez" mesajı View'e gider.
+
+Controller'da Fluent Validation nasıl kullanılır?
+
+```javascript
+CategoryValidator validationRules = new CategoryValidator();
+ValidationResult validationResult = validationRules.Validate(category);
+
+validationResult.IsValid -> Boolean değer döner.
+```
+
+## Sunum Katmanı - Rys
+
+Projenin sunum katmanı .Net Core5 ile oluşturulmuştur. Model-View-Controller yapısını kullanarak BussinesLayer ve EntityLayer ile ortaklaşa çalışır.
+
+### Controllers
+
+Web projesinin arka planında çalışan kısımdır. BussinesLayer ile bağlantılı çalışır.
+
+Örneğin:
+
+```bash
+CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
+```
+İş katmanında bulunan CategoryManager'ı yeniler. CategoryManager DataAccessLayer'dan Context.cs sınıfını kullanması için EfCategoryRepository.cs sınıfını parametre olarak kullanmalıdır.
+
+### Models
+
+İki ilişkili tabloyu çekerken bazen Include metodu yetersiz kalıyor onun için Models klasörünün içine yeni bir sınıf tanımlanır bu sınıf EntityLayer'daki varlığ kalıtım alır.
+
+Örneğin:
+
+```bash
+public class VMPhoneOrder : EntityLayer.Concrete.PhoneOrder
+```
+Bu klasörde oluşturulan Model View'e gönderilir ve denetleyicide kod karmaşıklığı olmaz.
+
+### Views
+
+Bu klasörün denetleyici isimlerine göre klasörlere ayrılmış bir yapısı vardır. Shared klasörü altında temanın Navbar, Footer, Menu ve Layoutu gibi parçalanmış görünümlerini tutar.
+
+Layout.cshtml nasıl parçalanır?
+
+Temanın Navbarını ayrı dosyada tutmak istiyorsanız Layouta bildirmemiz gerekiyor.
+
+Örneğin:
+
+```bash
+<partial name="_Navbar" />
 ```
 
 ## API Kullanımı
