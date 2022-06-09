@@ -1,6 +1,6 @@
 Getting started with Markdown
 =============================
-- [Paragraph](#özellikler)
+- [Uygulama Hakkında](#özellikler)
 - [List](#list)
 	- [List CheckBox](#list-checkbox)
 - [Link](#link)
@@ -10,7 +10,7 @@ Getting started with Markdown
 - [Style Text](#style-text)
 	- [Italic](#italic)
 	- [Bold](#bold)
-	- [Strikethrough](#strikethrough)
+	- [Strikethrough](#restoreanyönetimsistemi)
 - [Code](#code)
 - [Email](#email)
 - [Table](#table)
