@@ -16,6 +16,7 @@ namespace Rys.Controllers
         PhoneOrderManager orderManager = new PhoneOrderManager(new EfOrderRepository<PhoneOrder>());
         CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
         CustomerManager customerManager = new CustomerManager(new EfCustomerRepository());
+        GenericManager<PhoneOrderDetail> DetailManager = new GenericManager<PhoneOrderDetail>(new EfGenericRepository<PhoneOrderDetail>());
         #endregion
         public IActionResult Index()
         {
@@ -50,30 +51,32 @@ namespace Rys.Controllers
         [HttpPost]
         public JsonResult Add(IEnumerable<VMBucket> BucketList, int currentCustomer)
         {
-            var a = BucketList;
+            PhoneOrder newPhoneOrder = new PhoneOrder()
+            {
+                CustomerId = currentCustomer,
+                OrderTime = DateTime.Now,
+                Status = true,
+
+            };
+            orderManager.Add(newPhoneOrder);
+
+            int currentOrderId = orderManager.GetAll().Last().Id;
+            OrderDetailAdd(currentOrderId, BucketList);
             return Json(data: "data success");
         }
-        public IActionResult CustomerControl(string phoneNo)
+
+        private void OrderDetailAdd(int currentOrderId, IEnumerable<VMBucket> BucketList)
         {
-            ViewData["Phones"] = VMPhones.GetAll();
-            ViewData["Streets"] = null;
-            if (!String.IsNullOrEmpty(phoneNo))
+            foreach (var item in BucketList)
             {
-                var values = customerManager.GetAll(x => x.PhoneNumber == phoneNo);
-                if (values.Count == 0)
+                PhoneOrderDetail detail = new PhoneOrderDetail()
                 {
-                    ViewData["Streets"] = new VMRegion().streets;
-                    return View(new Customer { PhoneNumber = phoneNo });
-                }
-                else
-                {
-                    var currentCustomerId = values.First().Id;
-                    return RedirectToAction("Add", new { @id = currentCustomerId });//<--
-                }
-            }
-            else
-            {
-                return View();
+                    PhoneOrderId = currentOrderId,
+                    ProductId = item.ProductId,
+                    ProductCount = item.ProductCount
+                };
+
+                DetailManager.Add(detail);
             }
         }
     }
