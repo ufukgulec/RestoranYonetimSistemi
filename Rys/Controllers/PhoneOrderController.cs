@@ -4,6 +4,8 @@ using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Rys.Models;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Rys.Controllers
@@ -38,17 +40,18 @@ namespace Rys.Controllers
             return View(vm);
         }
         [HttpGet]
-        public IActionResult Add(int id) // Sipariş tablosu için telefon, Sokak id alınması lazım sipariş detay için ürün id ve adeti alınması lazım
+        public IActionResult Add() // Sipariş tablosu için telefon, Sokak id alınması lazım sipariş detay için ürün id ve adeti alınması lazım
         {
-            var currrentCustomer = VMCustomer.Get(id);
+            var currrentCustomer = VMCustomer.Get(1);
             ViewData["Customer"] = currrentCustomer;
 
             return View(categoryManager.GetAll("Products").Where(x => x.Status).Where(x => x.Products.Count != 0).ToList());
         }
         [HttpPost]
-        public IActionResult Add()
+        public JsonResult Add(IEnumerable<VMBucket> BucketList)
         {
-            return RedirectToAction("Index");
+            var a = BucketList;
+            return Json(data: "data success");
         }
         public IActionResult CustomerControl(string phoneNo)
         {
@@ -81,5 +84,6 @@ namespace Rys.Controllers
             int currentCustomerId = customerManager.GetAll().Last().Id;
             return RedirectToAction("Add", currentCustomerId);
         }
+
     }
 }

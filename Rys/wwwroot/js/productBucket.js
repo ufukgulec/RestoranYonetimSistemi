@@ -1,4 +1,5 @@
-﻿//Artı ve eksi butonlarının hepsi
+﻿
+//Artı ve eksi butonlarının hepsi
 const buttons = document.querySelectorAll(".btn-counter");
 
 //Değer Aralığı
@@ -48,7 +49,7 @@ buttons.forEach((button) => {
         } else {
             document.getElementById("btn-bucket").style.display = "none";
         }
-        console.table(products);
+        //console.table(products);
 
         // 7. Yeni sayıyı atama inputa atama
         numberContainer.textContent = newNumber;
@@ -130,3 +131,26 @@ function bucketListRemove(name, productId) {
     }
 
 }
+$(document).ready(function () {
+
+    $("#btn-bucket").click(function () {
+        var BucketList = new Array();
+        $(".list-group").find("li").each(function () {
+
+            var productId = parseInt($(this).attr("id").split("-")[1]);
+            var productCount = parseInt($(this).find("span").text());
+
+            var VMBucket = {};
+            VMBucket.ProductId = productId;
+            VMBucket.ProductCount = productCount;
+
+            BucketList.push(VMBucket);
+        });
+        console.table(BucketList);
+
+        $.post("/PhoneOrder/Add", { BucketList: BucketList }, function () {
+            alert("success");
+        });
+
+    });
+});
