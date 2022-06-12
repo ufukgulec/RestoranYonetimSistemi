@@ -49,7 +49,7 @@ namespace Rys.Controllers
             return View(categoryManager.GetAll("Products").Where(x => x.Status).Where(x => x.Products.Count != 0).ToList());
         }
         [HttpPost]
-        public JsonResult Add(IEnumerable<VMBucket> BucketList, int currentCustomer)
+        public IActionResult Add(IEnumerable<VMBucket> BucketList, int currentCustomer)
         {
             PhoneOrder newPhoneOrder = new PhoneOrder()
             {
@@ -62,7 +62,7 @@ namespace Rys.Controllers
 
             int currentOrderId = orderManager.GetAll().Last().Id;
             OrderDetailAdd(currentOrderId, BucketList);
-            return Json(data: "data success");
+            return RedirectToAction("Index", "PhoneOrder");
         }
 
         private void OrderDetailAdd(int currentOrderId, IEnumerable<VMBucket> BucketList)
@@ -75,7 +75,6 @@ namespace Rys.Controllers
                     ProductId = item.ProductId,
                     ProductCount = item.ProductCount
                 };
-
                 DetailManager.Add(detail);
             }
         }

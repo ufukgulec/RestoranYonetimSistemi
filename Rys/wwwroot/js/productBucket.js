@@ -151,7 +151,8 @@ $(document).ready(function () {
         var customerId = $("#currentCustomer").val();
 
         $.post("/PhoneOrder/Add", { BucketList: BucketList, currentCustomer: customerId }, function () {
-
+            $("#bucket-toast").removeClass("hide");
+            $("#bucket-toast").addClass("show");
         });
 
     });
