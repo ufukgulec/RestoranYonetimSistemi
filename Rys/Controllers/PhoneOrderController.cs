@@ -75,15 +75,6 @@ namespace Rys.Controllers
             {
                 return View();
             }
-
-
         }
-        public IActionResult CustomerAdd(Customer customer)
-        {
-            customerManager.Add(customer);
-            int currentCustomerId = customerManager.GetAll().Last().Id;
-            return RedirectToAction("Add", new { @id = currentCustomerId });
-        }
-
     }
 }
