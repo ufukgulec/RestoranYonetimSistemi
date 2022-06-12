@@ -46,6 +46,7 @@ namespace Rys.Controllers
 
             if (validationResult.IsValid)
             {
+                product.Status = true;
                 productManager.Add(product);
                 return RedirectToAction("Index");
             }

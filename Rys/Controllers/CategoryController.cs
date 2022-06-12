@@ -24,6 +24,7 @@ namespace Rys.Controllers
         [HttpPost]
         public IActionResult Details(Category category)
         {
+            category.Status = true;
             categoryManager.Update(category);
             return RedirectToAction("Index");
         }
