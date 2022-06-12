@@ -148,8 +148,10 @@ $(document).ready(function () {
         });
         console.table(BucketList);
 
-        $.post("/PhoneOrder/Add", { BucketList: BucketList }, function () {
-            alert("success");
+        var customerId = $("#currentCustomer").val();
+
+        $.post("/PhoneOrder/Add", { BucketList: BucketList, currentCustomer: customerId }, function () {
+
         });
 
     });

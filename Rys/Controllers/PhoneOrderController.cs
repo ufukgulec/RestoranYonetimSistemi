@@ -40,15 +40,15 @@ namespace Rys.Controllers
             return View(vm);
         }
         [HttpGet]
-        public IActionResult Add() // Sipariş tablosu için telefon, Sokak id alınması lazım sipariş detay için ürün id ve adeti alınması lazım
+        public IActionResult Add(int id) // Sipariş tablosu için telefon, Sokak id alınması lazım sipariş detay için ürün id ve adeti alınması lazım
         {
-            var currrentCustomer = VMCustomer.Get(1);
+            var currrentCustomer = VMCustomer.Get(id);
             ViewData["Customer"] = currrentCustomer;
 
             return View(categoryManager.GetAll("Products").Where(x => x.Status).Where(x => x.Products.Count != 0).ToList());
         }
         [HttpPost]
-        public JsonResult Add(IEnumerable<VMBucket> BucketList)
+        public JsonResult Add(IEnumerable<VMBucket> BucketList, int currentCustomer)
         {
             var a = BucketList;
             return Json(data: "data success");
@@ -82,7 +82,7 @@ namespace Rys.Controllers
         {
             customerManager.Add(customer);
             int currentCustomerId = customerManager.GetAll().Last().Id;
-            return RedirectToAction("Add", currentCustomerId);
+            return RedirectToAction("Add", new { @id = currentCustomerId });
         }
 
     }
