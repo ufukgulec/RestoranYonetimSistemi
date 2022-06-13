@@ -17,7 +17,7 @@ Başlarken
 	- [Controllers](#controllers)
 	- [Models](#models)
 	- [Views](#views)
-- [Arayüz Tasarımı](#arayüz-tasarimi)
+- [Arayüz Tasarımı](#arayüz-tasarımı)
 
 # Restoran Yönetim Sistemi Uygulaması
 
