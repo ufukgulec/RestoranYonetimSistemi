@@ -1,0 +1,42 @@
+﻿@using EntityLayer.Concrete;
+@model List<Table>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <h5 class="card-header">Masalar</h5>
+        <div class="row px-3">
+            @foreach (var item in Model)
+            {
+                if (item.Status)
+                {
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card bg-success text-white mb-3">
+                            <div class="card-header">Masa-@item.Id</div>
+                            <div class="card-body">
+                                <h5 class="card-title text-white">Masa Siparişe Hazır</h5>
+                                <a href="/Table/Status/@item.Id" class="btn btn-outline-light">Sipariş</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card bg-danger text-white mb-3">
+                            <div class="card-header">Masa-@item.Id</div>
+                            <div class="card-body">
+                                <h5 class="card-title text-white">Masa Kapalı</h5>
+                                <a href="/Table/Status/@item.Id" class="btn btn-outline-light">Masayı Aç</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+</div>
