@@ -29,9 +29,10 @@ Web uygulaması olarak geliştirilen bu projede restoranın yönetiminde kullan�
 - Telefon Siparişi Takip
 - Masa Siparişi Takip
 
+
 ## Uygulama Görüntüleri
 
-![Uygulama Ekran Görüntüsü](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Ekran görüntüsü 2022-06-13 121938](https://user-images.githubusercontent.com/51711890/173321998-e21c81bf-e34e-41cd-8362-f4ade6373e98.png)
 
 ## Proje Tanıtımı
 
