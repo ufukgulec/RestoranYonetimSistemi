@@ -1,6 +1,3 @@
-[TOCM]
-
-[TOC]
 Başlarken 
 =============================
 - [Uygulama Hakkında](#restoran-yönetim-sistemi-uygulaması)
@@ -20,7 +17,7 @@ Başlarken
 	- [Controllers](#controllers)
 	- [Models](#models)
 	- [Views](#views)
-
+- [Arayüz Tasarımı](#arayüz-tasarimi)
 
 # Restoran Yönetim Sistemi Uygulaması
 
@@ -31,15 +28,6 @@ Web uygulaması olarak geliştirilen bu projede restoranın yönetiminde kullan�
 - Ekle Sil Güncelle (Kategori,Ürün,Müşteri,Sokak,Mahalle...)
 - Telefon Siparişi Takip
 - Masa Siparişi Takip
-
-## Uygulama Görüntüleri
-
-|![](https://github.com/ufukgulec/RestoranYonetimSistemi/blob/master/Images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202022-06-13%20122057.png?raw=true)
-|![](https://github.com/ufukgulec/RestoranYonetimSistemi/blob/master/Images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202022-06-13%20121938.png?raw=true)
-|![](https://github.com/ufukgulec/RestoranYonetimSistemi/blob/master/Images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202022-06-13%20122149.png?raw=true)
-| ------------ | ------------ |
-| ![](https://pandao.github.io/editor.md/examples/images/8.jpg)  |![](https://pandao.github.io/editor.md/examples/images/8.jpg)   |
-|  ![](https://pandao.github.io/editor.md/examples/images/8.jpg) |  ![](https://pandao.github.io/editor.md/examples/images/8.jpg) |
 
 ## Proje Tanıtımı
 
@@ -201,7 +189,32 @@ Denetleyiciden gelen değer dizi ise:
 @using EntityLayer.Concrete;
 @model List<Product>
 ```
+## Arayüz tasarımı
 
+### Anasayfa
+![Ekran görüntüsü 2022-06-13 121938](https://user-images.githubusercontent.com/51711890/173327182-44337208-1a1e-4c82-84ae-54bd58b0f240.png)
+### Kategori Listeleme
+![Ekran görüntüsü 2022-06-13 122057](https://user-images.githubusercontent.com/51711890/173327264-5af8636e-2570-4ae5-b934-b5845081915f.png)
+### Kategori Ekleme ve Güncelleme
+![Ekran görüntüsü 2022-06-13 122149](https://user-images.githubusercontent.com/51711890/173327315-b5a5a55f-e0a5-4489-a6f4-0d99b7eb5f21.png)
+### Ürün Listeleme
+![Ekran görüntüsü 2022-06-13 122205](https://user-images.githubusercontent.com/51711890/173327363-8408722f-dbd4-4ec1-96f7-23b1586efd9f.png)
+### Ürün Ekleme ve Güncelleme
+![Ekran görüntüsü 2022-06-13 122219](https://user-images.githubusercontent.com/51711890/173327413-e2130d26-1a50-4dd0-8d5f-505a9b55e587.png)
+### Mahalle&Sokak Listeleme
+![Ekran görüntüsü 2022-06-13 122232](https://user-images.githubusercontent.com/51711890/173327502-53d5caea-968e-4b9c-8413-e602431793c6.png)
+### Müşteri Listeleme
+![Ekran görüntüsü 2022-06-13 122252](https://user-images.githubusercontent.com/51711890/173327545-3af26f02-1d05-451c-8970-323b2e77a7d0.png)
+### Masa Listeleme
+![Ekran görüntüsü 2022-06-13 122317](https://user-images.githubusercontent.com/51711890/173327589-f172a7f0-909f-41a3-a3d9-6f3fcf4410b9.png)
+### Günlük Sipariş Listeleme
+![Ekran görüntüsü 2022-06-13 122338](https://user-images.githubusercontent.com/51711890/173327638-097ed3b2-97cd-47d3-b6d2-d330151741d4.png)
+### Tüm Siparişleri Listeleme
+![Ekran görüntüsü 2022-06-13 122409](https://user-images.githubusercontent.com/51711890/173327807-881f3117-a1e0-4835-ad9b-1b43683f7d65.png)
+### Sipariş Detay
+![Ekran görüntüsü 2022-06-13 122351](https://user-images.githubusercontent.com/51711890/173327694-2f893850-ed6d-419e-9b49-3d39b041c645.png)
+### Sipariş Girme
+![Ekran görüntüsü 2022-06-13 122435](https://user-images.githubusercontent.com/51711890/173327875-a718ef15-98a5-4b5b-bc3b-f3a20dc4c535.png)
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ufukgulec&show_icons=true&theme=radical)
 
