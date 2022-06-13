@@ -1,3 +1,6 @@
+[TOCM]
+
+[TOC]
 Başlarken 
 =============================
 - [Uygulama Hakkında](#restoran-yönetim-sistemi-uygulaması)
@@ -29,10 +32,11 @@ Web uygulaması olarak geliştirilen bu projede restoranın yönetiminde kullan�
 - Telefon Siparişi Takip
 - Masa Siparişi Takip
 
-
 ## Uygulama Görüntüleri
 
-| [![](https://pandao.github.io/editor.md/examples/images/7.jpg)](https://pandao.github.io/editor.md/examples/images/7.jpg )  |![](https://pandao.github.io/editor.md/examples/images/8.jpg)   |
+|![](https://github.com/ufukgulec/RestoranYonetimSistemi/blob/master/Images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202022-06-13%20122057.png?raw=true)
+|![](https://github.com/ufukgulec/RestoranYonetimSistemi/blob/master/Images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202022-06-13%20121938.png?raw=true)
+|![](https://github.com/ufukgulec/RestoranYonetimSistemi/blob/master/Images/Ekran%20g%C3%B6r%C3%BCnt%C3%BCs%C3%BC%202022-06-13%20122149.png?raw=true)
 | ------------ | ------------ |
 | ![](https://pandao.github.io/editor.md/examples/images/8.jpg)  |![](https://pandao.github.io/editor.md/examples/images/8.jpg)   |
 |  ![](https://pandao.github.io/editor.md/examples/images/8.jpg) |  ![](https://pandao.github.io/editor.md/examples/images/8.jpg) |
