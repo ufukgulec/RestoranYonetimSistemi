@@ -32,7 +32,10 @@ Web uygulaması olarak geliştirilen bu projede restoranın yönetiminde kullan�
 
 ## Uygulama Görüntüleri
 
-![Ekran görüntüsü 2022-06-13 121938](https://user-images.githubusercontent.com/51711890/173321998-e21c81bf-e34e-41cd-8362-f4ade6373e98.png)
+| [![](https://pandao.github.io/editor.md/examples/images/7.jpg)](https://pandao.github.io/editor.md/examples/images/7.jpg )  |![](https://pandao.github.io/editor.md/examples/images/8.jpg)   |
+| ------------ | ------------ |
+| ![](https://pandao.github.io/editor.md/examples/images/8.jpg)  |![](https://pandao.github.io/editor.md/examples/images/8.jpg)   |
+|  ![](https://pandao.github.io/editor.md/examples/images/8.jpg) |  ![](https://pandao.github.io/editor.md/examples/images/8.jpg) |
 
 ## Proje Tanıtımı
 
