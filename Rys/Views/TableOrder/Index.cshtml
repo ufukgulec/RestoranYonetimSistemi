@@ -1,0 +1,201 @@
+﻿@using EntityLayer.Concrete
+@model List<TableOrder>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Telefon Siparişi /</span> Günlük Siparişler</h4>
+    <div class="row">
+        <div class="col-12 col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title d-flex align-items-start justify-content-between">
+                        <div class="avatar flex-shrink-0">
+                            <i class="bx bx-up-arrow-circle text-success"></i>
+                        </div>
+                    </div>
+                    <span class="d-block mb-1">Yeni Sipariş</span>
+                    <h3 class="card-title text-nowrap mb-2">
+                        @Model.Where(s=>s.Status).Count() Adet
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title d-flex align-items-start justify-content-between">
+                        <div class="avatar flex-shrink-0">
+                            <i class="bx bx-down-arrow-circle text-danger"></i>
+                        </div>
+                    </div>
+                    <span class="d-block mb-1">Giden Sipariş</span>
+                    <h3 class="card-title text-nowrap mb-2">
+                        @Model.Where(s=>!s.Status).Count() Adet
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title d-flex align-items-start justify-content-between">
+                        <div class="avatar flex-shrink-0">
+                            <i class="bx bxs-bar-chart-alt-2 text-primary"></i>
+                        </div>
+                    </div>
+                    <span class="d-block mb-1">Toplam Sipariş</span>
+                    <h3 class="card-title text-nowrap mb-2">
+                        @Model.Count() Adet
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md mb-4 mb-md-0">
+        <div class="accordion mt-3" id="accordionExample">
+            <div class="card accordion-item active">
+                <h2 class="accordion-header" id="headingOne">
+                    <button type="button"
+                            class="accordion-button text-success"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#yeni"
+                            aria-expanded="false"
+                            aria-controls="yeni">
+
+                        Yeni Gelen Siparişler
+                    </button>
+                </h2>
+
+                <div id="yeni"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="yeni"
+                     data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <!-- Basic Bootstrap Table -->
+                        <div class="card1">
+                            <h5 class="card-header">Ürünler</h5>
+                            <div class="table-responsive text-nowrap">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Müşteri Numarası</th>
+                                            <th>Sipariş Zamanı</th>
+                                            <th>Sipariş Tutarı</th>
+                                            <th>İşlem</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                        @foreach (var item in Model.Where(s => s.Status))
+                                        {
+                                            int i = 1;
+                                            <tr>
+                                                <th scope="row">@i</th>
+                                                <td>@item.Table.Id</td>
+                                                <td>@item.OrderTime</td>
+                                                <td>item.Amount ₺</td>
+                                                <td>
+                                                    <div class="dropdown" style="position:inherit">
+                                                        <button type="button"
+                                                            class="btn p-0 dropdown-toggle hide-arrow"
+                                                            data-bs-toggle="dropdown">
+                                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+
+                                                            <a class="dropdown-item" href="/PhoneOrder/Complete/@item.Id"><i class="bx bxs-truck text-success me-2"></i> Siparişi Tamamla</a>
+
+                                                            <a class="dropdown-item"
+                                                           href="/PhoneOrder/Details/@item.Id">
+                                                                <i class="bx bx-edit-alt text-primary me-2"></i>
+                                                                İncele
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            i++;
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--/ Basic Bootstrap Table -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion mt-3" id="accordionExample">
+            <div class="card accordion-item active">
+                <h2 class="accordion-header" id="headingOne">
+                    <button type="button"
+                            class="accordion-button text-danger"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#eski"
+                            aria-expanded="false"
+                            aria-controls="eski">
+
+                        Giden Siparişler
+                    </button>
+                </h2>
+
+                <div id="eski"
+                     class="accordion-collapse collapse"
+                     aria-labelledby="eski"
+                     data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <!-- Basic Bootstrap Table -->
+                        <div class="card1">
+                            <h5 class="card-header">Ürünler</h5>
+                            <div class="table-responsive text-nowrap">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Müşteri Numarası</th>
+                                            <th>Sipariş Zamanı</th>
+                                            <th>Sipariş Tutarı</th>
+                                            <th>İşlem</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                        @foreach (var item in Model.Where(s => !s.Status))
+                                        {
+                                            <tr>
+                                                <th scope="row">@item.Id</th>
+                                                <td>@item.Customer.PhoneNumber</td>
+                                                <td>@item.OrderTime</td>
+                                                <td>item.Amount ₺</td>
+                                                <td>
+                                                    <div class="dropdown" style="position:inherit">
+                                                        <button type="button"
+                                                            class="btn p-0 dropdown-toggle hide-arrow"
+                                                            data-bs-toggle="dropdown">
+                                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item"
+                                                           href="/PhoneOrder/Details/@item.Id">
+                                                                <i class="bx bx-edit-alt text-primary me-2"></i>
+                                                                İncele
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--/ Basic Bootstrap Table -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
