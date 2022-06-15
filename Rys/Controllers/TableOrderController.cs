@@ -20,7 +20,7 @@ namespace Rys.Controllers
         #endregion
         public IActionResult Index()
         {
-            var values = orderManager.GetAll("Customer").Where(x => x.OrderTime.Date == System.DateTime.Now.Date).ToList();//Günlük siparişler
+            var values = orderManager.GetAll("Table").Where(x => x.OrderTime.Date == System.DateTime.Now.Date).ToList();//Günlük siparişler
             return View(values);
         }
         public IActionResult History()

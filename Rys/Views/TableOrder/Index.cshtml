@@ -5,7 +5,7 @@
 }
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Telefon Siparişi /</span> Günlük Siparişler</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Masa Siparişi /</span> Günlük Siparişler</h4>
     <div class="row">
         <div class="col-12 col-md-4 mb-3">
             <div class="card">
@@ -81,8 +81,8 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>Müşteri Numarası</th>
-                                            <th>Sipariş Zamanı</th>
+                                            <th>Masa</th>
+                                            <th>Garson Adı</th>
                                             <th>Sipariş Tutarı</th>
                                             <th>İşlem</th>
                                         </tr>
@@ -92,8 +92,8 @@
                                         {
                                             int i = 1;
                                             <tr>
-                                                <th scope="row">@i</th>
-                                                <td>@item.Table.Id</td>
+                                                <th scope="row">Masa-@item.TableId</th>
+                                                <td>@item.Staff.Name</td>
                                                 <td>@item.OrderTime</td>
                                                 <td>item.Amount ₺</td>
                                                 <td>
@@ -155,8 +155,8 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>Müşteri Numarası</th>
-                                            <th>Sipariş Zamanı</th>
+                                            <th>Masa</th>
+                                            <th>Garson Adı</th>
                                             <th>Sipariş Tutarı</th>
                                             <th>İşlem</th>
                                         </tr>
@@ -165,8 +165,8 @@
                                         @foreach (var item in Model.Where(s => !s.Status))
                                         {
                                             <tr>
-                                                <th scope="row">@item.Id</th>
-                                                <td>@item.Customer.PhoneNumber</td>
+                                                <th scope="row">Masa-@item.TableId</th>
+                                                <td>@item.Staff.Name</td>
                                                 <td>@item.OrderTime</td>
                                                 <td>item.Amount ₺</td>
                                                 <td>
