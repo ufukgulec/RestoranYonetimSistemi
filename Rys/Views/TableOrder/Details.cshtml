@@ -1,0 +1,130 @@
+﻿@using EntityLayer.Concrete
+@model PhoneOrder
+@{
+    ViewData["Title"] = "Details";
+    int total = 0;
+}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Telefon Siparişi /</span> Sipariş Detay</h4>
+    <div class="row">
+        <div class="col-lg-12 mb-4 order-1">
+            <div class="card">
+                <h5 class="card-header">Siparişler</h5>
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Ürün Adeti</th>
+                                <th>Ürün Adı</th>
+                                <th>Fiyat</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach (var item in Model.PhoneOrderDetails)
+                            {
+                                <tr>
+                                    <td>@item.ProductCount x</td>
+                                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.Product.Name</strong></td>
+                                    @{
+                                        int price = Convert.ToInt32(item.Product.Price);
+                                        int count = item.ProductCount;
+                                        int amount = price * count;
+                                        total += amount;
+                                    }
+                                    <td>
+                                        @amount <b>₺</b>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 mb-4 order-0">
+            <div class="card h-100">
+                <div class="d-flex align-items-start row">
+                    <div class="col-sm-6">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between border-bottom">
+                                <div class="avatar flex-shrink-0">
+                                    <i class='bx bxs-phone-call text-success'></i>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Düzenle</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Telefonu Kaydet</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Müşteri Telefonu</span>
+                            <h5 class="card-title mb-2">@Model.Customer.PhoneNumber</h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between border-bottom">
+                                <div class="avatar flex-shrink-0">
+                                    <i class='bx bxs-location-plus text-warning'></i>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Düzenle</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Adresi Kaydet</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Adres</span>
+                            <h5 class="card-title mb-2">@Model.Customer.Street.District.Name Mahallesi @Model.Customer.Street.Name Sokak</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4 order-0">
+            <div class="card h-100">
+                <div class="d-flex align-items-end1 row">
+                    <div class="col-sm-12">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between border-bottom">
+                                <div class="avatar flex-shrink-0">
+                                    <i class='bx bxs-credit-card-front text-danger'></i>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Tamamla</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Yazdır</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Sipariş Tutarı</span>
+                            <h3 class="card-title mb-2">@total ₺</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

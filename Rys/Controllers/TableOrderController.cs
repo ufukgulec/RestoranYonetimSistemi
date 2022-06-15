@@ -17,6 +17,7 @@ namespace Rys.Controllers
         CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
         CustomerManager customerManager = new CustomerManager(new EfCustomerRepository());
         GenericManager<TableOrderDetail> DetailManager = new GenericManager<TableOrderDetail>(new EfGenericRepository<TableOrderDetail>());
+        GenericManager<Table> tableManager = new GenericManager<Table>(new EfGenericRepository<Table>());
         #endregion
         public IActionResult Index()
         {
@@ -25,7 +26,7 @@ namespace Rys.Controllers
         }
         public IActionResult History()
         {
-            var values = orderManager.GetAll("Customer");//Tüm Siparişler
+            var values = orderManager.GetAll("Table");//Tüm Siparişler
             return View(values);
         }
         public IActionResult Complete(int id)
@@ -37,32 +38,33 @@ namespace Rys.Controllers
         }
         public IActionResult Details(int id)
         {
-            // VMPhoneOrder vm = new VMPhoneOrder(orderManager.Get(id));
-            return View();
+            VMTableOrder vm = new VMTableOrder(orderManager.Get(id));
+            return View(vm);
         }
         [HttpGet]
         public IActionResult Add(int id) // Sipariş tablosu için telefon, Sokak id alınması lazım sipariş detay için ürün id ve adeti alınması lazım
         {
-            var currrentCustomer = VMCustomer.Get(id);
-            ViewData["Customer"] = currrentCustomer;
+            var currrentTable = tableManager.Get(id);
+            ViewData["Table"] = currrentTable;
 
             return View(categoryManager.GetAll("Products").Where(x => x.Status).Where(x => x.Products.Count != 0).ToList());
         }
         [HttpPost]
-        public IActionResult Add(IEnumerable<VMBucket> BucketList, int currentCustomer)
+        public IActionResult Add(IEnumerable<VMBucket> BucketList, int currentTable)
         {
-            //PhoneOrder newPhoneOrder = new PhoneOrder()
-            //{
-            //    CustomerId = currentCustomer,
-            //    OrderTime = DateTime.Now,
-            //    Status = true,
+            TableOrder newTableOrder = new TableOrder()
+            {
+                TableId = currentTable,
+                OrderTime = DateTime.Now,
+                Status = true,
+                StaffId = 1,//<---
 
-            //};
-            //orderManager.Add(newPhoneOrder);
+            };
+            orderManager.Add(newTableOrder);
 
             int currentOrderId = orderManager.GetAll().Last().Id;
             OrderDetailAdd(currentOrderId, BucketList);
-            return RedirectToAction("Index", "PhoneOrder");
+            return RedirectToAction("Index", "TableOrder");
         }
 
         private void OrderDetailAdd(int currentOrderId, IEnumerable<VMBucket> BucketList)
