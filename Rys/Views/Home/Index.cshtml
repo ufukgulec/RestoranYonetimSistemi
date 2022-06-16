@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using Rys.Models
+@model VMIndex
 
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
@@ -56,7 +58,7 @@
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Telefon Siparişi</span>
-                            <h3 class="card-title mb-2">12</h3>
+                            <h3 class="card-title mb-2">@Model.PhoneOrder Adet</h3>
                         </div>
                     </div>
                 </div>
@@ -85,7 +87,7 @@
                                 </div>
                             </div>
                             <span>Masa Siparişi</span>
-                            <h3 class="card-title text-nowrap mb-1">4</h3>
+                            <h3 class="card-title text-nowrap mb-1">@Model.TableOrder Adet</h3>
                         </div>
                     </div>
                 </div>
@@ -172,7 +174,7 @@
                                 </div>
                             </div>
                             <span class="d-block mb-1">Kategori</span>
-                            <h3 class="card-title text-nowrap mb-2">8 Adet</h3>
+                            <h3 class="card-title text-nowrap mb-2">@Model.CategoryCount Adet</h3>
                         </div>
                     </div>
                 </div>
@@ -199,7 +201,7 @@
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Ürün</span>
-                            <h3 class="card-title mb-2">12 Adet</h3>
+                            <h3 class="card-title mb-2">@Model.ProductCount Adet</h3>
                         </div>
                     </div>
                 </div>
@@ -253,7 +255,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex flex-column align-items-center gap-1">
-                            <h2 class="mb-2">16</h2>
+                            <h2 class="mb-2">@Model.TotalOrder</h2>
                             <span>Toplam Sipariş</span>
                         </div>
                         <div id="orderStatisticsChart"></div>
@@ -271,7 +273,7 @@
                                     <small class="text-muted">Telefon Siparişleri</small>
                                 </div>
                                 <div class="user-progress">
-                                    <small class="fw-semibold">12 Adet</small>
+                                    <small class="fw-semibold">@Model.PhoneOrder Adet</small>
                                 </div>
                             </div>
                         </li>
@@ -285,7 +287,7 @@
                                     <small class="text-muted">Masa Siparişleri</small>
                                 </div>
                                 <div class="user-progress">
-                                    <small class="fw-semibold">4 Adet</small>
+                                    <small class="fw-semibold">@Model.TableOrder Adet</small>
                                 </div>
                             </div>
                         </li>

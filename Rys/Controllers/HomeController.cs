@@ -20,7 +20,8 @@ namespace Rys.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            VMIndex vm = new VMIndex();
+            return View(vm);
         }
 
         public IActionResult Privacy()
