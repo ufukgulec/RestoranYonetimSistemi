@@ -189,6 +189,28 @@ Denetleyiciden gelen değer dizi ise:
 @using EntityLayer.Concrete;
 @model List<Product>
 ```
+### Authentication
+Kullanıcı adı ve parolaya göre giriş yapılması için sunum katmanında Authorization işlemleri yaptım.
+Startup.cs Dosyasında ConfigureServices metoduna eklediklerim
+```javascript
+public void ConfigureServices(IServiceCollection services)
+{
+  services.AddMvc(c =>
+  {
+   var policy = new AuthorizationPolicyBuilder()
+			.RequireAuthenticatedUser()
+                            .Build();
+   c.Filters.Add(new AuthorizeFilter(policy));
+   });
+
+   services.AddMvc();
+   services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+   {
+    x.LoginPath = "/Login/Index";
+   });
+}
+```
+
 ## Arayüz tasarımı
 
 ### Anasayfa
