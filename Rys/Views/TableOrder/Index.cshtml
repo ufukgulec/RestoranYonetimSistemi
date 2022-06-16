@@ -80,7 +80,6 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th></th>
                                             <th>Masa</th>
                                             <th>Garson Adı</th>
                                             <th>Sipariş Tutarı</th>
@@ -95,7 +94,6 @@
                                                 <th scope="row">Masa-@item.TableId</th>
                                                 <td>@item.Staff.Name</td>
                                                 <td>@item.OrderTime</td>
-                                                <td>item.Amount ₺</td>
                                                 <td>
                                                     <div class="dropdown" style="position:inherit">
                                                         <button type="button"
@@ -157,7 +155,6 @@
                                             <th></th>
                                             <th>Masa</th>
                                             <th>Garson Adı</th>
-                                            <th>Sipariş Tutarı</th>
                                             <th>İşlem</th>
                                         </tr>
                                     </thead>
@@ -166,9 +163,8 @@
                                         {
                                             <tr>
                                                 <th scope="row">Masa-@item.TableId</th>
-                                                <td>@item.Staff.Name</td>
+                                                <td>@item.Staff.Name @item.Staff.Surname</td>
                                                 <td>@item.OrderTime</td>
-                                                <td>item.Amount ₺</td>
                                                 <td>
                                                     <div class="dropdown" style="position:inherit">
                                                         <button type="button"

@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-@model PhoneOrder
+@model TableOrder
 @{
     ViewData["Title"] = "Details";
     int total = 0;
@@ -21,7 +21,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach (var item in Model.PhoneOrderDetails)
+                            @foreach (var item in Model.TableOrderDetails)
                             {
                                 <tr>
                                     <td>@item.ProductCount x</td>
@@ -73,8 +73,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Müşteri Telefonu</span>
-                            <h5 class="card-title mb-2">@Model.Customer.PhoneNumber</h5>
+                            <span class="fw-semibold d-block mb-1">Garson</span>
+                            <h5 class="card-title mb-2">@Model.Staff.Name @Model.Staff.Surname</h5>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -93,8 +93,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Adres</span>
-                            <h5 class="card-title mb-2">@Model.Customer.Street.District.Name Mahallesi @Model.Customer.Street.Name Sokak</h5>
+                            <span class="fw-semibold d-block mb-1">Masa</span>
+                            <h5 class="card-title mb-2">Masa-@Model.TableId</h5>
                         </div>
                     </div>
                 </div>

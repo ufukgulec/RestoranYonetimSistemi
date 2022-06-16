@@ -21,12 +21,12 @@ namespace Rys.Controllers
         #endregion
         public IActionResult Index()
         {
-            var values = orderManager.GetAll("Table").Where(x => x.OrderTime.Date == System.DateTime.Now.Date).ToList();//Günlük siparişler
+            var values = orderManager.GetAll("Staff").Where(x => x.OrderTime.Date == System.DateTime.Now.Date).ToList();//Günlük siparişler
             return View(values);
         }
         public IActionResult History()
         {
-            var values = orderManager.GetAll("Table");//Tüm Siparişler
+            var values = orderManager.GetAll("Staff");//Tüm Siparişler
             return View(values);
         }
         public IActionResult Complete(int id)
@@ -57,7 +57,7 @@ namespace Rys.Controllers
                 TableId = currentTable,
                 OrderTime = DateTime.Now,
                 Status = true,
-                StaffId = 1,//<---
+                StaffId = 2,//<---
 
             };
             orderManager.Add(newTableOrder);

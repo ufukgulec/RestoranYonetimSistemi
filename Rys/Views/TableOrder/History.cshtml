@@ -22,7 +22,7 @@
                             Arama Yöntemi
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" style="">
-                            <li><a class="dropdown-item" href="javascript:void(0);">Telefon numarasına göre</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0);">Garsona göre</a></li>
                             <li><a class="dropdown-item" href="javascript:void(0);">Sipariş zamanına göre</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -57,10 +57,9 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>Masa</th>
                             <th>Garson Adı</th>
-                            <th>Sipariş Tutarı</th>
+                            <th>Sipariş Zamanı</th>
                             <th>İşlem</th>
                         </tr>
                     </thead>
@@ -70,9 +69,8 @@
                             int i = 1;
                             <tr>
                                 <th scope="row">Masa-@item.TableId</th>
-                                <td>@item.Staff.Name</td>
+                                <td>@item.Staff.Name @item.Staff.Surname</td>
                                 <td>@item.OrderTime</td>
-                                <td>item.Amount ₺</td>
                                 <td>
                                     <div class="dropdown" style="position:inherit">
                                         <button type="button"
